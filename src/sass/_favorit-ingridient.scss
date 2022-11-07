@@ -1,0 +1,62 @@
+h2 {
+    margin-bottom: 60px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.91;
+    text-align: center;
+    color: $texttColorBlack;
+}
+
+.drink__title {
+    margin-bottom: 20px;
+    font-family: $fRoboto;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 1.61;
+    color: $texttColorBlack;
+}
+
+.drink {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #000000;
+}
+
+p.no__favorite {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 3;
+    text-align: center;
+    color: $texttColorBlack;
+}
+
+.favorite-ingridient__list {
+    @media screen and (min-width: $tab) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+} 
+
+.favorite-ingridient__item {
+    padding: 20px;
+    width: 100%;
+    border: 1px solid $accentColor;
+    border-radius: 4px;
+    @media screen and (min-width: $tab) {
+            width: calc((100% - 32px)/ 2);
+    }
+        @media screen and (min-width: $desk) {
+            width: calc((100% - 2 * 32px)/ 3);
+        }
+}
+
+.favorite-ingridient__item:not(:last-child) {
+    @media screen and (max-width: $tab) {
+       margin-bottom: 20px;     
+    } 
+}
