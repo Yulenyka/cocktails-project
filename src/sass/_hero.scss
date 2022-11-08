@@ -1,48 +1,115 @@
 .hero__container {
-    display: flex;
-    gap: 59px;
+    position: relative;
 }
 
 .hero__title {
     font-weight: 600;
-    font-size: 52px;
-    line-height: 1.54;
+    font-size: 22px;
+    line-height: 1.91;
     color: $accentColor;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
+
+    @media screen and (min-width: 768px) {
+        max-width: 336px;
+        font-size: 26px;
+        line-height: 1.62;
+        padding-top: 20px;
+            margin-bottom: 40;
+    }
+
+    @media screen and (min-width: 1280px) {
+                max-width: 688px;
+        font-size: 52px;
+        line-height: 1.54;
+        padding-top: 0;
+    }
+}
+
+.hero__photo {
+width: 100%;
+    @media screen and (min-width: 768px) {
+        position: absolute;
+        top: 0;
+        right: 19px;
+        width: 336px;
+        height: 294px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 501px;
+        height: 439px;
+    }
+
 }
 
 .hero__text {
     font-weight: 500;
-    font-size: 18px;
-    line-height: 1.56;
+    font-size: 14px;
+    line-height: 2;
     letter-spacing: 0.02em;
-    color: $textColorBlack;
+    color: #000000;
     opacity: 0.8;
-    margin-bottom: 40px;
-}
+    margin-bottom: 20px;
+        margin-top: 60px;
 
-.hero__button {
-    width: 40px;
-    height: 40px;
-    font-weight: 700;
-    font-size: 24px;
-    line-height: 36px;
-    color: $textColorGray;
-    border: transparent;
-    cursor: pointer;
-}
+    @media screen and (min-width: 768px) {
+        color: $textColorBlack;
+                margin-top: 38px;
+        margin-bottom: 36px;
+    }
 
-.hero__item:nth-child(27) {
-    margin-left: 39px;
-}
-
-.hero__photo {
-    max-width: 501px;
-    height: 439px;
+    @media screen and (min-width: 1280px) {
+        font-size: 18px;
+        line-height: 1.56;
+    }
 }
 
 .hero__navigation {
-    display: flex;
-    flex-wrap: wrap;
-    width: 520px;
+    @media screen and (max-width: 767.98px) {
+        display: none;
+    }
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-wrap: wrap;
+        width: 324px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 520px;
+    }
+}
+
+.hero__button {
+
+    @media screen and (min-width: 768px) {
+        width: 24px;
+        height: 25px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 21px;
+        color: $textColorGray;
+        border: transparent;
+        cursor: pointer;
+
+    }
+
+    @media screen and (min-width: 1280px) {
+        width: 40px;
+        height: 40px;
+        font-size: 24px;
+        line-height: 36px;
+
+    }
+
+}
+
+.hero__item:nth-child(27) {
+    @media screen and (min-width: 768px) {
+        margin-left: 24px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin-left: 39px;
+    }
 }
