@@ -1,0 +1,21 @@
+.favorite-cocktails__title {
+    font-family: $fPoppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.91;
+    text-align: center;
+    color: $textColorBlack;
+}
+.no__favorite-cocktails {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 3;
+    text-align: center;
+    color: $textColorBlack;
+    visibility: visible;
+}
+
+.no__favorite-cocktails.is-hidden {
+    visibility: hidden;
+}
