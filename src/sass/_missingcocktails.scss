@@ -1,0 +1,82 @@
+.cocktails-title--refusal {
+  margin: auto;
+  max-width: 280px;
+  font-family: $fPoppins;
+  margin-bottom: 60px;
+  font-style: normal;
+  color: $textColorBlack;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+  text-align: center;
+
+  @media screen and (min-width: $tab) {
+    max-width: 331px;
+    font-family: $fRoboto;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.31;
+    text-align: center;
+  }
+
+  @media screen and (min-width: $desk) {
+    max-width: 493px;
+    font-family: $fPoppins;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 1.5;
+    text-align: center;
+  }
+}
+.cocktails-frame {
+  height: 308px;
+  background-image: url(../images/cocktails/photo-mob.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 280px 308px;
+  @media screen and (min-width: $tab) {
+    background-image: url(../images/cocktails/frame-tablet.png);
+    height: 380px;
+    background-size: 345px 380px;
+  }
+}
+
+@media screen and (max-width: $tab) {
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and(--weblit-min-device-pixel-ratio: 2),
+    screen and (-o-min-device-pixel-ratio: 2/1),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .cocktails-frame {
+      background-image: url(../images/cocktails/photo@2x-mob.png);
+    }
+  }
+  @media (min-device-pixel-ratio: 3),
+    screen and (o-min-device-pixel-ratio: 3/1),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    .cocktails-frame {
+      background-image: url(../images/cocktails/photo@3x-mob.png);
+    }
+  }
+}
+
+@media screen and (min-width: $tab) {
+  @media screen and (min-device-pixel-ratio: 2),
+    screen and(--weblit-min-device-pixel-ratio: 2),
+    screen and (-o-min-device-pixel-ratio: 2/1),
+    screen and (min-resolution: 192dpi),
+    screen and (min-resolution: 2dppx) {
+    .cocktails-frame {
+      background-image: url(../images/cocktails/frame@2x-tablet.png);
+    }
+  }
+  @media (min-device-pixel-ratio: 3),
+    screen and (o-min-device-pixel-ratio: 3/1),
+    screen and (min-resolution: 288dpi),
+    screen and (min-resolution: 3dppx) {
+    .cocktails-frame {
+      background-image: url(../images/cocktails/frame@3x-tablet.png);
+    }
+  }
+}
