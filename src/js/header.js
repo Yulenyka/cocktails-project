@@ -19,8 +19,11 @@ apiService.getCocktailRandom(9).then(resp => {
 //   console.log(resp);
 // });
 
-// const tmpArr = apiService.getCocktailByFirstLetter('a').then(resp => {
+// apiService.getCocktailByFirstLetter('a').then(resp => {
 //   // Возвращает массив коктейлей по первой букве/цифре
 //   // возвращает пустой массив, если ничего не найдено
 //   console.log(resp);
 // });
+apiService.getCocktailIngr().then(resp => {
+  console.log(resp);
+});

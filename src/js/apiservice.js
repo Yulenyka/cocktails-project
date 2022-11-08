@@ -48,4 +48,10 @@ export default class ApiService {
     const resp = await axios.get(searchString);
     return resp.data.drinks;
   }
+
+  async getCocktailIngr() {
+    const searchString = `http://thecocktaildb.com/api/json/v1/1/search.php?i=campari`;
+    const resp = await axios.get(searchString);
+    return resp.data.ingredients;
+  }
 }
