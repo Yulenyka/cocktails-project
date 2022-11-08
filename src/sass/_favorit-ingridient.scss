@@ -8,7 +8,7 @@
     color: $textColorBlack;
 }
 
-.drink__title {
+.drink__ingridient {
     margin-bottom: 20px;
     font-family: $fRoboto;
     font-weight: 900;
@@ -20,7 +20,7 @@
     }
 }
 
-.drink {
+.drink__type {
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 14px;
@@ -80,4 +80,10 @@ p.no__favorite-ingridient.is-hidden {
     @media screen and (max-width: $tab) {
        margin-bottom: 20px;     
     } 
+}
+
+.favorite-ingridient__item:last-child {
+    @media screen and (max-width: $tab) {
+        margin-bottom: 28px;
+    }
 }
