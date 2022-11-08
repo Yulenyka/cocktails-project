@@ -23,5 +23,6 @@ export default function createMarkUpCocktails(gallery, photos = []) {
               </ul>`
     )
     .join('');
+
   gallery.insertAdjacentHTML('afterend', markUp);
 }
