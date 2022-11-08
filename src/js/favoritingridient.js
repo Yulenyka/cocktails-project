@@ -1,29 +1,32 @@
 import './sass/_favorit-ingridient.scss';
-import './sass/_favorite-cocktails.scss';
-// import { queryImage } from './api/fetch';
+import axios from 'axios';
+import ApiService from './apiservice';
+import { ApiService } from './apiservice';
 
+let apiService = new ApiService();
 const favoriteIngridientList = document.querySelector(
   '.favorite-ingridient__list'
 );
 const favoriteIngridientItem = document.querySelector(
   '.favorite-ingridient__item'
 );
+const navSublinkCocktails = document.querySelector(
+  "a[href='./favorite-cocktails.html']"
+);
+const DATA_KEY = 'favorite-ingredient';
 
-// const renderMarkupIngridient = data => {
-//   const markupIngridient = data
-//     .map(({ strDrink, strIngredient }) => {
-//       return `<ul class="favorite-ingridient__list">
-//                 <li class="favorite-ingridient__item">
-//                 <h3 class="drink__title">${strDrink}</h3>
-//                 <p class="drink">${strIngredient}</p>
-//                 <div>
-//                 <button>Learn more</button>
-//                 <button>Add to<svg width="17px" height="15px"></svg></button>
-//                 </div>
-//                 </li>
-//                 </ul>
-//               `;
-//     })
-//     .join('');
-//   favoriteIngridientItem.innerHTML += markupIngridient;
-// };
+let favoriteIngredient = {
+  strIngredient,
+};
+
+navSublinkCocktails.addEventListener('click', showCoctails);
+
+export function showCoctails(e) {
+  if (localStorage.getItem(DATA_KEY)) {
+    favoriteCocktails = JSON.parse(localStorage.getItem(DATA_KEY));
+    for (let key in favoriteCocktails) {
+      createMarkUpCocktails(gallery, (photos = []));
+    }
+  }
+}
+showCoctails();

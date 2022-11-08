@@ -1,23 +1,27 @@
 import './sass/_favorite-cocktails.scss';
 import axios from 'axios';
 import { ApiService } from './apiservice';
+import ApiService from './apiservice';
 
+let apiService = new ApiService();
+
+const DATA_KEY = 'favorite-cocktails'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Наташи
 const navSublinkCocktails = document.querySelector(
   "a[href='./favorite-cocktails.html']"
 );
 
+let favoriteCocktails = {
+  strDrink,
+};
+
 navSublinkCocktails.addEventListener('click', showCoctails);
 
 export function showCoctails(e) {
-  if (e.target.tagName === navSublinkCocktails) {
-    console.log(e.target.href);
+  if (localStorage.getItem(DATA_KEY)) {
+    favoriteCocktails = JSON.parse(localStorage.getItem(COCTAIL_KEY));
+    for (let key in favoriteCocktails) {
+      createMarkUpCocktails(gallery, (photos = []));
+    }
   }
-
-  //   if (localStorage.getItem(DATA_KEY)) {
-  //     valueForm = JSON.parse(localStorage.getItem(DATA_KEY));
-  //     for (let key in valueForm) {
-  //       feedbackForm.elements[key].value = valueForm[key];
-  //     }
-  //   }
 }
 showCoctails();
