@@ -1,0 +1,234 @@
+.cocktails-title {
+  font-family: $fPoppins;
+  margin-bottom: 60px;
+  font-style: normal;
+  color: $textColorBlack;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.91;
+  text-align: center;
+
+  @media screen and (min-width: $tab) {
+    margin-bottom: 56px;
+    font-family: $fRoboto;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.31;
+  }
+
+  @media screen and (min-width: $desk) {
+    margin-bottom: 60px;
+    font-family: $fPoppins;
+    font-size: 48px;
+    line-height: 1.5;
+  }
+}
+.cocktails-list {
+  @media screen and (max-width: 767.97px) {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: $tab) {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width: $desk) {
+    flex-wrap: nowrap;
+  }
+}
+
+.cocktails__item {
+  width: 100%;
+  border: 1px solid $accentColor;
+  border-radius: 4px;
+
+  @media screen and (min-width: $tab) {
+    width: calc((100% - 32px) / 2);
+  }
+  @media screen and (min-width: $desk) {
+    width: calc((100% - 64px) / 3);
+  }
+}
+.cocktails__item:not(:last-child) {
+  @media screen and (max-width: $tab) {
+    margin-bottom: 20px;
+  }
+}
+.cocktails__name {
+  padding-top: 48px;
+  padding-bottom: 16px;
+
+  font-family: $fRoboto;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.62;
+  text-align: center;
+  color: $textColorBlack;
+  @media screen and (min-width: $tab) {
+    padding-top: 20px;
+    padding-bottom: 25px;
+    font-size: 28px;
+    line-height: 1.17;
+  }
+  @media screen and (min-width: $desk) {
+    padding-bottom: 27px;
+    font-size: 32px;
+    line-height: 1.19;
+  }
+}
+.button-list {
+  display: flex;
+  gap: 17px;
+  justify-content: center;
+  padding-bottom: 24px;
+  @media screen and (min-width: $tab) {
+    padding-bottom: 20px;
+  }
+  @media screen and (min-width: $desk) {
+    padding-bottom: 28px;
+  }
+}
+
+.button-add {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 108px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 4px;
+  border: 1px solid $accentColor;
+  border-radius: 4px;
+  background: transparent;
+  font-family: $fRoboto;
+  line-height: 1.71;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  color: $buttonColor;
+  cursor: pointer;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: #f5f5f5;
+  }
+  &:active {
+    background-color: transparent;
+  }
+  @media screen and (min-width: $tab) {
+    gap: 0;
+    min-width: 123px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  @media screen and (min-width: $desk) {
+    min-width: 141px;
+  }
+}
+.button-more {
+  min-width: 108px;
+  align-items: center;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: $buttonColor;
+  font-family: $fRoboto;
+  line-height: 1.71;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: $textColorWhite;
+  cursor: pointer;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: #f5f5f5;
+    color: $accentColor;
+  }
+  &:active {
+    background-color: $accentColor;
+    color: $textColorWhite;
+  }
+  @media screen and (min-width: $tab) {
+    min-width: 160px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  @media screen and (min-width: $desk) {
+    min-width: 182px;
+  }
+}
+.button-add::after {
+  display: inline-block;
+  content: '';
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  background-image: url(../images/cocktails/heart.svg);
+  @media screen and (min-width: $tab) {
+    width: 24px;
+    height: 24px;
+    margin-left: 6px;
+  }
+}
+.button-remove {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 108px;
+  padding-top: 6px;
+  padding-bottom: 7px;
+  border-radius: 4px;
+  border: 1px solid $accentColor;
+  border-radius: 4px;
+  background: transparent;
+  font-family: $fRoboto;
+  line-height: 1.71;
+  text-align: center;
+  justify-content: center;
+  letter-spacing: 0.02em;
+  color: $buttonColor;
+  cursor: pointer;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover,
+  &:focus {
+    background-color: #f5f5f5;
+  }
+  &:active {
+    background-color: transparent;
+  }
+  @media screen and (min-width: $tab) {
+    gap: 0;
+    min-width: 123px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-size: 20px;
+    line-height: 1.2;
+  }
+  @media screen and (min-width: $desk) {
+    min-width: 141px;
+  }
+}
+.button-remove::after {
+  display: inline-block;
+  content: '';
+  width: 18px;
+  height: 18px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-left: 8px;
+  background-image: url(../images/cocktails/heartfiil.svg);
+  @media screen and (min-width: $tab) {
+    width: 24px;
+    height: 24px;
+    margin-left: 6px;
+  }
+}
