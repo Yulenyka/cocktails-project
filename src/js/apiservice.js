@@ -1,57 +1,102 @@
 import axios from 'axios';
 
 export default class ApiService {
-  constructor() {
-    this.cocktailsArray = [];
-  }
+  constructor() {}
 
   async getCocktailRandom(count) {
     // передаем в count необходимое количество коктейлей
     // возвращает массив коктейлей или пустой массив, если не найдено ни одного
     const searchString = 'https://thecocktaildb.com/api/json/v1/1/random.php';
-    const cocktailsArray = [];
-    // const currentCocktails = [];
-    let index = 0;
+    const currentCocktails = [];
 
-    do {
-      const currentCocktails = await axios.get(searchString);
-      cocktailsArray[index] = currentCocktails.data.drinks[0];
+    for (let index = 0; index < count; index++) {
+      currentCocktails[index] = axios.get(searchString);
+    }
 
-      index += 1;
-    } while (index < count);
-
-    // console.log(cocktailsArray);
-    return cocktailsArray;
+    return Promise.all(currentCocktails)
+      .then(resultArray => {
+        return resultArray.map(elem => elem.data.drinks[0]);
+      })
+      .catch(e => {
+        return [];
+      });
   }
 
   async getCocktailByName(name) {
     // возвращает массив коктейлей по имени name, или пустой массив
     // если ничего не найдено, возвращает пустой массив
-    // const cocktailsArray = [];
     const searchString = `https://thecocktaildb.com/api/json/v1/1/search.php?s=${name}`;
-    const resp = await axios.get(searchString);
-    return resp.data.drinks;
+
+    return axios
+      .get(searchString)
+      .then(resultArray => {
+        if (resultArray.data.drinks.length === 0) return [];
+        return resultArray.data.drinks;
+      })
+      .catch(e => {
+        return [];
+      });
   }
 
   async getCocktailById(idCocktail) {
-    // возвращает массив с одним коктейлем сщщотвтствующим idCocktail
+    // возвращает массив с одним коктейлем по idCocktail
     // возвращает пустой массив, если ничего не найдено
     const searchString = `https://thecocktaildb.com/api/json/v1/1/lookup.php?i=${idCocktail}`;
-    const resp = await axios.get(searchString);
-    return resp.data.drinks;
+    return axios
+      .get(searchString)
+      .then(resultArray => {
+        if (resultArray.data.drinks.length === 0) return [];
+        return resultArray.data.drinks;
+      })
+      .catch(e => {
+        return [];
+      });
   }
 
   async getCocktailByFirstLetter(letter) {
     // Возвращает массив коктейлей по первой букве/цифре letter
     // возвращает пустой массив, если ничего не найдено
     const searchString = `https://thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`;
-    const resp = await axios.get(searchString);
-    return resp.data.drinks;
+
+    return axios
+      .get(searchString)
+      .then(resultArray => {
+        if (resultArray.data.drinks.length === 0) return [];
+        return resultArray.data.drinks;
+      })
+      .catch(e => {
+        return [];
+      });
   }
 
-  async getCocktailIngr() {
-    const searchString = `http://thecocktaildb.com/api/json/v1/1/search.php?i=campari`;
-    const resp = await axios.get(searchString);
-    return resp.data.ingredients;
+  async getCocktailIngrName(name) {
+    // возвращает ингридиет по имени name.
+    // возвращает пустой массив, если ничего не найдено
+    const searchString = `https://thecocktaildb.com/api/json/v1/1/search.php?i=${name}`;
+
+    return axios
+      .get(searchString)
+      .then(resultArray => {
+        if (resultArray.data.ingredients.length === 0) return [];
+        return resultArray.data.ingredients;
+      })
+      .catch(e => {
+        return [];
+      });
+  }
+
+  async getCocktailIngrId(id) {
+    // возвращает ингридиет по id.
+    // возвращает пустой массив, если ничего не найдено
+    const searchString = `https://thecocktaildb.com/api/json/v1/1/lookup.php?iid=${id}`;
+    return axios
+      .get(searchString)
+      .then(resultArray => {
+        if (resultArray.data.ingredients.length === 0) return [];
+        return resultArray.data.ingredients;
+      })
+      .catch(e => {
+        return [];
+      });
   }
 }
