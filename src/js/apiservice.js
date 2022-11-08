@@ -49,8 +49,18 @@ export default class ApiService {
     return resp.data.drinks;
   }
 
-  async getCocktailIngr() {
-    const searchString = `http://thecocktaildb.com/api/json/v1/1/search.php?i=campari`;
+  async getCocktailIngrName(name) {
+    // возвращает ингридиет по имени name.
+    // возвращает пустой массив, если ничего не найдено
+    const searchString = `http://thecocktaildb.com/api/json/v1/1/search.php?i=${name}`;
+    const resp = await axios.get(searchString);
+    return resp.data.ingredients;
+  }
+
+  async getCocktailIngrId(id) {
+    // возвращает ингридиет по id.
+    // возвращает пустой массив, если ничего не найдено
+    const searchString = `http://thecocktaildb.com/api/json/v1/1/lookup.php?iid=${id}`;
     const resp = await axios.get(searchString);
     return resp.data.ingredients;
   }
