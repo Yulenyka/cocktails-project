@@ -10,14 +10,17 @@ export default class ApiService {
     // возвращает массив коктейлей или пустой массив, если не найдено ни одного
     const searchString = 'https://thecocktaildb.com/api/json/v1/1/random.php';
     const cocktailsArray = [];
+    // const currentCocktails = [];
     let index = 0;
 
     do {
       const currentCocktails = await axios.get(searchString);
       cocktailsArray[index] = currentCocktails.data.drinks[0];
+
       index += 1;
     } while (index < count);
 
+    // console.log(cocktailsArray);
     return cocktailsArray;
   }
 
@@ -44,5 +47,11 @@ export default class ApiService {
     const searchString = `https://thecocktaildb.com/api/json/v1/1/search.php?f=${letter}`;
     const resp = await axios.get(searchString);
     return resp.data.drinks;
+  }
+
+  async getCocktailIngr() {
+    const searchString = `http://thecocktaildb.com/api/json/v1/1/search.php?i=campari`;
+    const resp = await axios.get(searchString);
+    return resp.data.ingredients;
   }
 }
