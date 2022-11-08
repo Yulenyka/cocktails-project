@@ -7,7 +7,7 @@ let apiService = new ApiService();
 //   console.log(resp);
 // });
 
-// apiService.getCocktailByName('margarita').then(resp => {
+// apiService.getCocktailByName('beer').then(resp => {
 //   // возвращает массив коктейлей по имени name, или пустой массив
 //   // если ничего не найдено, возвращает пустой массив
 //   console.log(resp);
@@ -19,7 +19,7 @@ let apiService = new ApiService();
 //   console.log(resp);
 // });
 
-// apiService.getCocktailByFirstLetter('a').then(resp => {
+// apiService.getCocktailByFirstLetter('b').then(resp => {
 //   // Возвращает массив коктейлей по первой букве/цифре
 //   // возвращает пустой массив, если ничего не найдено
 //   console.log(resp);
@@ -31,7 +31,7 @@ let apiService = new ApiService();
 //   console.log(resp);
 // });
 
-// apiService.getCocktailIngrId(52).then(resp => {
+// apiService.getCocktailIngrId(83).then(resp => {
 //   // возвращает ингридиет по id.
 //   // возвращает пустой массив, если ничего не найдено
 //   console.log(resp);
