@@ -1,0 +1,2 @@
+const e=document.querySelector("body"),t=document.querySelector(".theme-switch__label");document.querySelector("#themeSwitch");t.addEventListener("click",(function(){e.classList.toggle("change-toggle-color"),span.forEach((e=>e.classList.toggle("dark")));const t=localStorage.getItem("theme");null===t||"light"===t?localStorage.setItem("theme","dark"):localStorage.setItem("theme","light")}));
+//# sourceMappingURL=index.1aad01b4.js.map
