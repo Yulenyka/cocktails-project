@@ -1,2 +1,0 @@
-!function(){var e=document.querySelector("body"),t=document.querySelector(".theme-switch__label");document.querySelector("#themeSwitch");t.addEventListener("click",(function(){e.classList.toggle("change-toggle-color"),span.forEach((function(e){return e.classList.toggle("dark")}));var t=localStorage.getItem("theme");null===t||"light"===t?localStorage.setItem("theme","dark"):localStorage.setItem("theme","light")}))}();
-//# sourceMappingURL=favorite-cocktails.57f423e9.js.map
