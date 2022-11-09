@@ -28,9 +28,6 @@ async function markUpRandomCocktails() {
   console.log(photo);
   gallery.innerHTML = '';
   createMarkUpCocktails(gallery, photo);
-  const btnAdd = document.querySelector('.button-add');
-  btnAdd.addEventListener('click', addToFavorite);
-  return photo;
 }
 markUpRandomCocktails();
 // console.log(markUpRandomCocktails().then(res => console.log(res)));
@@ -66,22 +63,27 @@ function calculatePhoto() {
 // }
 // sectionSelectionFoRender();
 
-const btnAdd = document.querySelector('');
-console.log(btnAdd);
-btnAdd.addEventListener('click', addToFavorite);
+const cocktailsListRef = document.querySelector('.cocktails-list');
+cocktailsListRef.addEventListener('click', onClickBtn);
+
+function onClickBtn(e) {
+  if (!e.target.classList.contains('button-add')) return;
+  const id = e.target.dataset.id;
+  console.log(id);
+  addToFavorite(id);
+}
 
 // Функція додавання до улюблених
 function addToFavorite(id = '') {
-  const favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
-  console.log(favorite);
-  const inArray = favorite.some(elem => elem.id === id);
+  const dataLocalStorage = localStorage.getItem(FAVORITE_KEY);
+  let favorite = dataLocalStorage ? JSON.parse(dataLocalStorage) : [];
+  const card = photo.find(elem => elem.idDrink === id);
+  const inArray = favorite.some(elem => elem.idDrink === id);
+  console.log('inArray :>> ', inArray);
   if (!inArray) {
-    const card = photo.find(elem => elem.id === id);
-    console.log(card);
     favorite.push(card);
-    localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
   } else {
-    const newArray = favorite.filter(elem => elem.id !== id);
-    localStorage.setItem(FAVORITE_KEY, JSON.stringify(newArray));
+    favorite = favorite.filter(elem => elem.idDrink !== id);
   }
+  localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
 }

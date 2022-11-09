@@ -1,7 +1,7 @@
 export default function createMarkUpCocktails(gallery, photo = []) {
   let markUp = photo
     .map(
-      ({ strDrink, strDrinkThumb }) =>
+      ({ strDrink, strDrinkThumb, idDrink }) =>
         `<li class="cocktails__item">
                 <img src="${strDrinkThumb}" alt="photo">
                 <h3 class="cocktails__name">"${strDrink}"</h3>
@@ -11,7 +11,7 @@ export default function createMarkUpCocktails(gallery, photo = []) {
                         </button>
                     </li>
                     <li class="button__item">
-                        <button class="button-add" type="button">Add to
+                        <button class="button-add" type="button" data-id="${idDrink}">Add to
                         </button>
                     </li>
                 </ul>
