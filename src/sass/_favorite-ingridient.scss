@@ -115,3 +115,13 @@ p.no__favorite-ingridient {
         margin-bottom: 28px;
     }
 }
+
+.backdrop.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    .modal {
+        transform: translate(-50%, -50%) scale(0.7);
+    }
+}

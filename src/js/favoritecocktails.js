@@ -1,6 +1,6 @@
 import ApiService from './apiservice';
 const gallery = document.querySelector('.cocktails-list');
-const buttonMore = document.querySelector('.button-more');
+// const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
 // const fav = 'favorite-cocktails'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Наташи
 
@@ -49,9 +49,22 @@ export function showCoctails(gallery) {
 
 showCoctails(gallery);
 
-function learnMoreCocktail(e) {
-  e.preventDefault();
-  const modal = document.querySelector('.modal');
-}
+// function learnMoreCocktail(e) {
+//   e.preventDefault();
+//   const modal = document.querySelector('.modal');
+// }
 
-buttonMore.addEventListener('click', learnMoreCocktail);
+// buttonMore.addEventListener('click', learnMoreCocktail);
+
+(() => {
+  const refs = {
+    buttonMore: document.querySelector('.button-more'),
+    modal: document.querySelector('[data-modal]'),
+  };
+
+  refs.buttonMore.addEventListener('click', toggleModal);
+
+  function toggleModal() {
+    refs.modal.classList.remove('is-hidden');
+  }
+})();
