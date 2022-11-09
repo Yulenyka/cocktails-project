@@ -1,5 +1,6 @@
 .favorite-ingridient__title {
     margin-bottom: 60px;
+    margin-top: 60px;
     font-weight: 600;
     font-size: 22px;
     line-height: 1.91;
@@ -93,12 +94,12 @@ p.no__favorite-ingridient {
     }
     @media screen and (min-width: $tab) {
         margin: 0;
-        width: 336px;
+        max-width: 336px;
         height: 205px;
         width: calc((100% - 32px)/ 2);
     }
     @media screen and (min-width: $desk) {
-        width: 395px;
+        min-width: 395px;
         height: 221px;
         width: calc((100% - 2 * 32px)/ 3);
     }

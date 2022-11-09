@@ -1,17 +1,18 @@
 import ApiService from './apiservice';
-const gallery = document.querySelector('.cocktails-list');
+import {} from './cocktails';
+const gallery = document.querySelector('.gallery');
 // const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
 // const fav = 'favorite-cocktails'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Наташи
 
-apiService.getCocktailRandom(3).then(data => {
-  console.log(data);
-  localStorage.setItem('fav', JSON.stringify(data));
-});
+// apiService.getCocktailRandom(3).then(data => {
+//   console.log(data);
+//   localStorage.setItem('fav', JSON.stringify(data));
+// });
 
 export function showCoctails(gallery) {
-  if (localStorage.getItem('fav')) {
-    let favoriteCocktails = JSON.parse(localStorage.getItem('fav'));
+  if (localStorage.getItem(FAVORITE_KEY)) {
+    let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY));
     console.log(favoriteCocktails);
     const markupCocktails = favoriteCocktails
       .map(({ strDrink, strDrinkThumb }) => {
@@ -48,6 +49,7 @@ export function showCoctails(gallery) {
 }
 
 showCoctails(gallery);
+console.log('Hallo');
 
 // function learnMoreCocktail(e) {
 //   e.preventDefault();
@@ -55,16 +57,3 @@ showCoctails(gallery);
 // }
 
 // buttonMore.addEventListener('click', learnMoreCocktail);
-
-(() => {
-  const refs = {
-    buttonMore: document.querySelector('.button-more'),
-    modal: document.querySelector('[data-modal]'),
-  };
-
-  refs.buttonMore.addEventListener('click', toggleModal);
-
-  function toggleModal() {
-    refs.modal.classList.remove('is-hidden');
-  }
-})();

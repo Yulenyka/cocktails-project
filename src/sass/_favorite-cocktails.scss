@@ -36,10 +36,21 @@
         }
 }
 
-.cocktails-list {
-    margin-bottom: 24px;
+.gallery {
+    @media screen and (max-width: 767.97px) {
+        display: block;
+        margin-bottom: 20px;
+    }
+
     @media screen and (min-width: $tab) {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
         margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $desk) {
+        flex-wrap: wrap;   
     }
 }
 
