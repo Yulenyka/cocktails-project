@@ -1,5 +1,6 @@
 import ApiService from './apiservice';
-const galleryCocktails = document.querySelector('.cocktails-list');
+const gallery = document.querySelector('.cocktails-list');
+const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
 // const fav = 'favorite-cocktails'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Наташи
 
@@ -8,7 +9,7 @@ apiService.getCocktailRandom(3).then(data => {
   localStorage.setItem('fav', JSON.stringify(data));
 });
 
-export function showCoctails(galleryCocktails) {
+export function showCoctails(gallery) {
   if (localStorage.getItem('fav')) {
     let favoriteCocktails = JSON.parse(localStorage.getItem('fav'));
     console.log(favoriteCocktails);
@@ -31,7 +32,7 @@ export function showCoctails(galleryCocktails) {
               `;
       })
       .join('');
-    galleryCocktails.innerHTML = markupCocktails;
+    gallery.innerHTML = markupCocktails;
   } else {
     const markupCocktails = favoriteCocktails
       .map(({ strDrink, strDrinkThumb }) => {
@@ -46,4 +47,11 @@ export function showCoctails(galleryCocktails) {
   }
 }
 
-showCoctails(galleryCocktails);
+showCoctails(gallery);
+
+function learnMoreCocktail(e) {
+  e.preventDefault();
+  const modal = document.querySelector('.modal');
+}
+
+buttonMore.addEventListener('click', learnMoreCocktail);
