@@ -1,5 +1,5 @@
-export default function createMarkUpMissingCocktails(container) {
+export default function createMarkUpMissingCocktails(wrapper) {
   let markUp = `<h2 class="cocktails-title--refusal">Sorry, we didn't find any cocktail for you</h2>
         <div class="cocktails-frame"></div>`;
-  container.insertAdjacentHTML('afterend', markUp);
+  wrapper.insertAdjacentHTML('afterbegin', markUp);
 }
