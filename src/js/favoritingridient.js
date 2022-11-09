@@ -18,11 +18,11 @@ export function showIngridients(galleryIngridients) {
   let favoriteIngridients = JSON.parse(localStorage.getItem('fav'));
   if (favoriteIngridients.length > 0) {
     const markupIngridients = favoriteIngridients
-      .map(({ strIngredient, strType }) => {
+      .map(({ strIngredient, strType, strAlcohol }) => {
         let text = strType ? strType : strAlcohol;
         return `<li class="favorite-ingridient__item">
       <h3 class="drink__ingridient">${strIngredient}</h3>
-      <p class="drink__type">Alcohol: ${strType}</p>
+      <p class="drink__type">Alcohol: ${text}</p>
       <ul class="button-list">
         <li class="button__item">
           <button class="button-more" type="submit">Learn more</button>
