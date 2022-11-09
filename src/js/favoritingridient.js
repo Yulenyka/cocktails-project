@@ -18,10 +18,11 @@ export function showIngridients(galleryIngridients) {
   let favoriteIngridients = JSON.parse(localStorage.getItem('fav'));
   if (favoriteIngridients.length > 0) {
     const markupIngridients = favoriteIngridients
-      .map(
-        ({ strIngredient, strType }) => `<li class="favorite-ingridient__item">
+      .map(({ strIngredient, strType }) => {
+        let text = strType ? strType : strAlcohol;
+        return `<li class="favorite-ingridient__item">
       <h3 class="drink__ingridient">${strIngredient}</h3>
-      <p class="drink__type">${strType}</p>
+      <p class="drink__type">Alcohol: ${strType}</p>
       <ul class="button-list">
         <li class="button__item">
           <button class="button-more" type="submit">Learn more</button>
@@ -30,8 +31,8 @@ export function showIngridients(galleryIngridients) {
           <button class="button-add" type="submit">Add to</button>
         </li>
       </ul>
-    </li>`
-      )
+    </li>`;
+      })
       .join('');
     galleryIngridients.innerHTML = markupIngridients;
   } else {
