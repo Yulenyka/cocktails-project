@@ -3,13 +3,17 @@ import { createMarkUpCocktails } from './createMarkUpCocktails';
 
 const letterList = document.querySelector('.hero__navigation');
 const letterBtn = document.querySelector('.hero__button');
+const gallery = document.querySelector('.cocktails-list');
+
 const newsApi = new ApiService();
 
 letterList.addEventListener('click', showCoctails);
 
-function showCoctails() {
+function showCoctails(event) {
+  console.log(event);
+
   const curArray = newsApi.getCocktailByFirstLetter('a');
+  //   console.log(event.target.dataset);
   //   console.log(curArray);
-  if (curArray === []) return;
-  createMarkUpCocktails();
+  //   createMarkUpCocktails(gallery, curArray);
 }
