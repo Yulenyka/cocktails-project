@@ -1,11 +1,24 @@
 .favorite-cocktails__title {
-    font-family: $fPoppins;
-    font-style: normal;
+    margin-bottom: 60px;
+    margin-top: 60px;
     font-weight: 600;
     font-size: 22px;
     line-height: 1.91;
     text-align: center;
     color: $textColorBlack;
+    @media screen and (min-width: $tab) {
+            font-family: 'Roboto';
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 1.19;
+        }
+    
+        @media screen and (min-width: $desk) {
+            font-family: 'Poppins';
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.5;
+        }
 }
 .no__favorite-cocktails {
     font-weight: 400;
@@ -13,9 +26,31 @@
     line-height: 3;
     text-align: center;
     color: $textColorBlack;
-    visibility: visible;
+    @media screen and (min-width: $tab) {
+        font-size: 24px;
+        line-height: 2.5;
+    }
+        @media screen and (min-width: $desk) {
+            font-size: 32px;
+            line-height: 2.25;
+        }
 }
 
-.no__favorite-cocktails.is-hidden {
-    visibility: hidden;
+.gallery {
+    @media screen and (max-width: 767.97px) {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: $tab) {
+        display: flex;
+        gap: 32px;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
+    }
+
+    @media screen and (min-width: $desk) {
+        flex-wrap: wrap;   
+    }
 }
+

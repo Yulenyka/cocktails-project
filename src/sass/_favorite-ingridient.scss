@@ -1,14 +1,27 @@
 .favorite-ingridient__title {
     margin-bottom: 60px;
-    font-style: normal;
+    margin-top: 60px;
     font-weight: 600;
     font-size: 22px;
     line-height: 1.91;
     text-align: center;
     color: $textColorBlack;
+    @media screen and (min-width: $tab) {
+        font-family: 'Roboto';
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.19;
+        }
+    
+        @media screen and (min-width: $desk) {
+            font-family: 'Poppins';
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.5;
+        }
 }
 
-.drink__title {
+.drink__ingridient {
     margin-bottom: 20px;
     font-family: $fRoboto;
     font-weight: 900;
@@ -17,10 +30,16 @@
     color: $textColorBlack;
     @media screen and (min-width: $tab) {
         margin-bottom: 28px;
+        font-size: 28px;
+        line-height: 1.18;
     }
+        @media screen and (min-width: $desk) {
+            font-size: 32px;
+            line-height: 1.19;
+        }
 }
 
-.drink {
+.drink__type {
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 14px;
@@ -29,7 +48,13 @@
     color: #000000;
     @media screen and (min-width: $tab) {
         margin-bottom: 28px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: $textColorGray;
     }
+        @media screen and (min-width: $tab) {
+            margin-bottom: 48px;
+        }
 }
 
 p.no__favorite-ingridient {
@@ -38,11 +63,15 @@ p.no__favorite-ingridient {
     line-height: 3;
     text-align: center;
     color: $textColorBlack;
-    visibility: visible;
-}
-
-p.no__favorite-ingridient.is-hidden {
-    visibility: hidden;
+    @media screen and (min-width: $tab) {
+            font-size: 24px;
+            line-height: 2.5;
+        }
+    
+        @media screen and (min-width: $desk) {
+            font-size: 32px;
+            line-height: 2.25;
+        }
 }
 
 .favorite-ingridient__list {
@@ -65,12 +94,12 @@ p.no__favorite-ingridient.is-hidden {
     }
     @media screen and (min-width: $tab) {
         margin: 0;
-        width: 336px;
+        max-width: 336px;
         height: 205px;
         width: calc((100% - 32px)/ 2);
     }
     @media screen and (min-width: $desk) {
-        width: 395px;
+        min-width: 395px;
         height: 221px;
         width: calc((100% - 2 * 32px)/ 3);
     }
@@ -80,4 +109,10 @@ p.no__favorite-ingridient.is-hidden {
     @media screen and (max-width: $tab) {
        margin-bottom: 20px;     
     } 
+}
+
+.favorite-ingridient__item:last-child {
+    @media screen and (max-width: $tab) {
+        margin-bottom: 28px;
+    }
 }

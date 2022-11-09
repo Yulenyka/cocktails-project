@@ -25,5 +25,4 @@ export default function createMarkUpCocktails(gallery, cards = []) {
               </li>`;
     })
     .join('');
-  gallery.insertAdjacentHTML('afterbegin', markUp);
 }
