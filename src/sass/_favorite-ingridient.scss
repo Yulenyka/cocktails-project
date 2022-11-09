@@ -1,11 +1,23 @@
 .favorite-ingridient__title {
     margin-bottom: 60px;
-    font-style: normal;
     font-weight: 600;
     font-size: 22px;
     line-height: 1.91;
     text-align: center;
     color: $textColorBlack;
+    @media screen and (min-width: $tab) {
+        font-family: 'Roboto';
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.19;
+        }
+    
+        @media screen and (min-width: $desk) {
+            font-family: 'Poppins';
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.5;
+        }
 }
 
 .drink__ingridient {
@@ -17,7 +29,13 @@
     color: $textColorBlack;
     @media screen and (min-width: $tab) {
         margin-bottom: 28px;
+        font-size: 28px;
+        line-height: 1.18;
     }
+        @media screen and (min-width: $desk) {
+            font-size: 32px;
+            line-height: 1.19;
+        }
 }
 
 .drink__type {
@@ -29,7 +47,13 @@
     color: #000000;
     @media screen and (min-width: $tab) {
         margin-bottom: 28px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: $textColorGray;
     }
+        @media screen and (min-width: $tab) {
+            margin-bottom: 48px;
+        }
 }
 
 p.no__favorite-ingridient {
@@ -38,7 +62,15 @@ p.no__favorite-ingridient {
     line-height: 3;
     text-align: center;
     color: $textColorBlack;
-    visibility: visible;
+    @media screen and (min-width: $tab) {
+            font-size: 24px;
+            line-height: 2.5;
+        }
+    
+        @media screen and (min-width: $desk) {
+            font-size: 32px;
+            line-height: 2.25;
+        }
 }
 
 .favorite-ingridient__list {
