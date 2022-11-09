@@ -1,5 +1,5 @@
 import ApiService from './apiservice';
-import {} from './cocktails';
+import { FAVORITE_KEY } from './cocktails';
 const gallery = document.querySelector('.gallery');
 // const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
@@ -49,11 +49,3 @@ export function showCoctails(gallery) {
 }
 
 showCoctails(gallery);
-console.log('Hallo');
-
-// function learnMoreCocktail(e) {
-//   e.preventDefault();
-//   const modal = document.querySelector('.modal');
-// }
-
-// buttonMore.addEventListener('click', learnMoreCocktail);

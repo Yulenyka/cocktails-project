@@ -116,3 +116,15 @@ p.no__favorite-ingridient {
         margin-bottom: 28px;
     }
 }
+
+.modal {
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    background-color: #f3f8ff;
+    padding: 0;
+    border: 5px solid #c6cfff;
+    width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: none;
+}

@@ -1,6 +1,7 @@
 import ApiService from './apiservice';
 const galleryIngridients = document.querySelector('.favorite-ingridient__list');
 let apiService = new ApiService();
+
 // const DATA_KEY = 'favorite-ingredient'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Влада
 
 apiService.getCocktailIngrId(83).then(resp => {
@@ -46,3 +47,10 @@ export function showIngridients(galleryIngridients) {
 }
 
 showIngridients(galleryIngridients);
+
+const buttonMore = document.querySelector('.button-more');
+const modal = document.querySelector('.modal');
+
+buttonMore.addEventListener('click', function () {
+  modal.style.display = 'block';
+});
