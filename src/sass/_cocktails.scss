@@ -27,23 +27,39 @@
   @media screen and (max-width: 767.97px) {
     display: block;
     margin-bottom: 20px;
+    & .cocktails__item:nth-child(n + 4) {
+      display: none;
+    }
   }
 
   @media screen and (min-width: $tab) {
     display: flex;
     gap: 32px;
     flex-wrap: wrap;
+    // & .cocktails__item {
+    //   display: flex;
+    // }
+    & .cocktails__item:nth-child(n + 7) {
+      display: none;
+    }
   }
   @media screen and (min-width: $desk) {
     flex-wrap: wrap;
+    & .cocktails__item:nth-child(n + 7) {
+      display: flex;
+    }
   }
 }
 
 .cocktails__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 100%;
   border: 1px solid $accentColor;
   border-radius: 4px;
-
+  @media screen and (max-width: $tab) {
+  }
   @media screen and (min-width: $tab) {
     width: calc((100% - 32px) / 2);
   }
