@@ -1,10 +1,13 @@
 import ApiService from './apiservice';
 const galleryIngridients = document.querySelector('.favorite-ingridient__list');
+const galleryIngridientsTitle = document.querySelector(
+  '.favorite-ingridient__title'
+);
 let apiService = new ApiService();
 
 // const DATA_KEY = 'favorite-ingredient'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Влада
 
-apiService.getCocktailIngrId(83).then(resp => {
+apiService.getCocktailIngrId(25).then(resp => {
   // возвращает ингридиет по id.
   // возвращает пустой массив, если ничего не найдено
   localStorage.setItem('fav', JSON.stringify(resp));
@@ -12,9 +15,8 @@ apiService.getCocktailIngrId(83).then(resp => {
 });
 
 export function showIngridients(galleryIngridients) {
-  if (localStorage.getItem('fav')) {
-    let favoriteIngridients = JSON.parse(localStorage.getItem('fav'));
-    console.log(favoriteIngridients);
+  let favoriteIngridients = JSON.parse(localStorage.getItem('fav'));
+  if (favoriteIngridients.length > 0) {
     const markupIngridients = favoriteIngridients
       .map(
         ({ strIngredient, strType }) => `<li class="favorite-ingridient__item">
@@ -33,24 +35,19 @@ export function showIngridients(galleryIngridients) {
       .join('');
     galleryIngridients.innerHTML = markupIngridients;
   } else {
-    const markupIngridients = favoriteIngridients
-      .map(({ strIngredient, strType }) => {
-        return `<p class="no__favorite-cocktails">
+    const markupIngridients = `<p class="no__favorite-cocktails">
       You haven't added any <br />
       favorite ingridients yet
-    </p>
-              `;
-      })
-      .join('');
-    galleryIngridients.innerHTML = markupIngridients;
+    </p>`;
+    galleryIngridientsTitle.insertAdjacentHTML('afterend', markupIngridients);
   }
 }
 
 showIngridients(galleryIngridients);
 
-const buttonMore = document.querySelector('.button-more');
-const modal = document.querySelector('.modal');
+// let more = document.querySelector('.button-more');
+// modal = document.querySelector('.modal');
 
-buttonMore.addEventListener('click', function () {
-  modal.style.display = 'block';
-});
+// more.addEventListener('click', function () {
+//   modal.style.display = 'block';
+// });
