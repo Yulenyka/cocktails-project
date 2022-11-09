@@ -3,34 +3,52 @@ import createMarkUpMissingCocktails from './createMarkUpMissingCocktails';
 import ApiService from './apiservice';
 import Render from './render';
 const gallery = document.querySelector('.cocktails-list');
-const container = document.querySelector('.container');
+const wrapper = document.querySelector('.missingcocktails-wrap');
 const FAVORITE_KEY = 'favorite';
 const newsApi = new ApiService();
 
-let photo = [];
+let cards = [];
 
-// Функція відмальовки зображень
-async function markUpRandomCocktails() {
-  photo = await newsApi.getCocktailRandom(9);
-  gallery.innerHTML = '';
-  createMarkUpCocktails(gallery, photo);
-}
-markUpRandomCocktails();
+// Функція відмальовки рандомних зображень
+// async function markUpRandomCocktails() {
+//   cards = await newsApi.getCocktailRandom(9);
+//   gallery.innerHTML = '';
+//   createMarkUpCocktails(gallery, cards);
+// }
+// markUpRandomCocktails();
 
 const cocktailsListRef = document.querySelector('.cocktails-list');
 cocktailsListRef.addEventListener('click', onClickBtn);
 
 function onClickBtn(e) {
-  if (!e.target.classList.contains('button-add')) return;
-  const id = e.target.dataset.id;
-  console.log(id);
-  addToFavorite(id);
+  if (e.target.dataset.action === 'favorite') {
+    const id = e.target.dataset.id;
+    console.log(id);
+    addToFavorite(id);
+    changeFavoriteBtn(e.target);
+  }
+}
+
+function changeFavoriteBtn(btn) {
+  console.log(btn);
+  const id = btn.dataset.id;
+  let favorite = getFavorite();
+  const inArray = favorite.some(elem => elem.idDrink === id);
+  if (inArray) {
+    btn.textContent = 'Remove';
+    btn.classList.add('button-remove');
+    btn.classList.remove('button-add');
+  } else {
+    btn.textContent = 'Add to';
+    btn.classList.add('button-add');
+    btn.classList.remove('button-remove');
+  }
 }
 // Функція додавання, видалення з улюблених
 function addToFavorite(id = '') {
-  const dataLocalStorage = localStorage.getItem(FAVORITE_KEY);
-  let favorite = dataLocalStorage ? JSON.parse(dataLocalStorage) : [];
-  const card = photo.find(elem => elem.idDrink === id);
+  let favorite = getFavorite();
+  const card = cards.find(elem => elem.idDrink === id);
+  console.log(favorite);
   const inArray = favorite.some(elem => elem.idDrink === id);
   console.log('inArray :>> ', inArray);
   if (!inArray) {
@@ -40,25 +58,27 @@ function addToFavorite(id = '') {
   }
   localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
 }
-// Функція зміни стилів кнопки
-function changeBtn(id = '') {
+// Функція наявності картки в LocalStr
+export function getFavorite() {
   const dataLocalStorage = localStorage.getItem(FAVORITE_KEY);
-  console.log(dataLocalStorage);
-  //   let favorite = dataLocalStorage ? JSON.parse(dataLocalStorage) : [];
+  let favorite = dataLocalStorage ? JSON.parse(dataLocalStorage) : [];
+  return favorite;
 }
-
-// Функція яка ховає секції( якщо пусте значення падає)
-// async function sectionSelectionFoRender() {
-//   photo = await newsApi.getCocktailByFirstLetter('2');
-//   console.log(photo);
-//   if (photo.length === 0) {
-//     document.querySelector('.missingcocktails').classList.remove('.is-none');
-//     document.querySelector('.cocktails').classList.add('.is-none');
-//     createMarkUpMissingCocktails(container);
-//   }
-//   createMarkUpCocktails(gallery, photo);
-// }
-// sectionSelectionFoRender();
+// Функція яка ховає секції
+async function sectionSelectionFoRender() {
+  cards = await newsApi.getCocktailByFirstLetter('0');
+  console.log(cards);
+  if (cards.length === 0) {
+    document.querySelector('.cocktails').classList.add('is-none');
+    document.querySelector('.missingcocktails').classList.remove('is-none');
+    createMarkUpMissingCocktails(wrapper);
+  } else {
+    document.querySelector('.missingcocktails').classList.add('is-none');
+    document.querySelector('.cocktails').classList.remove('is-none');
+    createMarkUpCocktails(gallery, cards);
+  }
+}
+sectionSelectionFoRender();
 
 // let render = new Render();
 // console.log(render);
