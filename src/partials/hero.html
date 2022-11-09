@@ -1,10 +1,25 @@
-<!-- hero  -->
-<section class="hero">
+<section class="hero section">
     <div class="hero__container container">
-        <div class="hero__text-block">
             <h1 class="hero__title">A party without cocktails is not like a party</h1>
+            <picture class="hero__image">
+                <source srcset="./images/desk-hero.png 1x, ./images/desk-hero@2x.png 2x, ./images/desk-hero@3x.png 3x"
+                    type="image/png" media="(min-width: 1280px)" />
+                <source
+                    srcset="./images/tablet-hero.png 1x, ./images/tablet-hero@2x.png 2x, ./images/tablet-hero@3x.png 3x"
+                    type="image/png" media="(min-width: 768px)" />
+                <source
+                    srcset="./images/mobile-hero.png 1x, ./images/mobile-hero@2x.png 2x, ./images/mobile-hero@3x.png 3x"
+                    type="image/png" media="(min-width: 320px)" />
+                <img class="hero__photo" src="./images/mobile-hero.png" alt="coctail" width="280">
+            </picture>
             <p class="hero__text">Search your favorite cocktail by ABC</p>
-            <ul class="hero__navigation li">
+            <div class="hero__select">
+                <span class="hero__select-letter">A</span>
+                <svg class="hero__icon" width="24" height="24">
+                    <use href="./images/hero-select.svg#icon-hero-select"></use>
+                </svg>
+            </div>
+            <ul class="hero__navigation is-hidden li">
                 <li class="hero__item">
                     <a class="hero__link" href="#">
                         <button type="button" class="hero__button" aria-label="Search coctail">A</button>
@@ -186,15 +201,5 @@
                     </a>
                 </li>
             </ul>
-        </div>
-
-        <div class="hero__image-block">
-            <picture>
-                <source srcset="./images/desk-hero.png 1x, ./images/desk-hero@2x.png 2x, ./images/desk-hero@3x.png 3x" type="image/png" media="(min-width: 1280px)" />
-                <source srcset="./images/tablet-hero.png 1x, ./images/tablet-hero@2x.png 2x, ./images/tablet-hero@3x.png 3x" type="image/png" media="(min-width: 768px)" />
-                <source srcset="./images/mobile-hero.png 1x, ./images/mobile-hero@2x.png 2x, ./images/mobile-hero@3x.png 3x" type="image/png" media="(min-width: 320px)" />
-                <img class="hero__photo" src="./images/mobile-hero.png" alt="coctail" width="280">
-            </picture>          
-        </div>
     </div>
 </section>
