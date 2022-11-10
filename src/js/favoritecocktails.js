@@ -1,5 +1,6 @@
 // import ApiService from './apiservice';
 import Render, { FAVORITE_KEY } from './render';
+import { openModalCocktail, renderModalCocktail } from './modalcocktail';
 const gallery = document.querySelector('.gallery');
 const galleryCocktailsTitle = document.querySelector(
   '.favorite-cocktails__title'
@@ -15,18 +16,18 @@ const galleryCocktailsTitle = document.querySelector(
 
 export function showAllCoctails(gallery) {
   let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
-  console.log(favoriteCocktails);
+  // console.log(favoriteCocktails);
 
   if (localStorage.getItem(FAVORITE_KEY) && favoriteCocktails.length > 0) {
     const markupCocktails = favoriteCocktails
       .map(({ strDrink, strDrinkThumb, idDrink, strIngredient }) => {
-        console.log(strIngredient);
+        // console.log(strIngredient);
         return `<li class="cocktails__item">
                 <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo">
                 <h3 class="cocktails__name">${strDrink}</h3>
                 <ul class="button-list">
                     <li class="button__item">
-                        <button class="button-more" type="submit">Learn more
+                        <button class="button-more" type="button" data-id="${idDrink}">Learn more
                         </button>
                     </li>
                   <li class="button__item">
@@ -39,6 +40,18 @@ export function showAllCoctails(gallery) {
       .join('');
     gallery.innerHTML = markupCocktails;
 
+    const buttonMore = document.querySelectorAll('.button-more');
+    buttonMore.forEach(elem => {
+      console.log(elem);
+      elem.addEventListener('click', e => {
+        let cocktail = favoriteCocktails.find(
+          elem => elem.idDrink === e.target.dataset.id
+        );
+        console.log(cocktail);
+        renderModalCocktail(cocktail);
+        openModalCocktail();
+      });
+    });
     const buttonRemove = document.querySelectorAll('.button-remove');
     buttonRemove.forEach(elem => {
       console.log(elem);

@@ -59,10 +59,3 @@ export function showIngridients(galleryIngridients) {
 }
 
 showIngridients(galleryIngridients);
-
-let more = document.querySelector('.button-more');
-modal = document.querySelector('.modal');
-
-more.addEventListener('click', function () {
-  modal.style.display = 'block';
-});
