@@ -1,6 +1,9 @@
+import Render, { FAVORITE_KEY } from './render';
+
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
+let render = new Render();
 
 export function openModalCocktail() {
   backdrop.classList.remove('is-hidden');
@@ -64,8 +67,34 @@ export function renderModalCocktail(cocktail) {
               <h3 class="instruction__title">Instructions:</h3>
               <p class="instruction__text">${strInstructions}</p>
           </div>
-          <button class='button-remove' type="button"></button>
+          <button class='button-remove' type="button" data-id="${idDrink}"></button>
                 `;
 
   modalCocktail.innerHTML = markup;
+  updateButton();
+}
+
+function updateButton() {
+  const btnModalCocktail = document.querySelector('.button-remove');
+  console.log(render.cards);
+  btnModalCocktail.addEventListener('click', e => {
+    console.log(e.target.dataset.id);
+    addToFavorite(e.target.dataset.id);
+  });
+}
+
+function addToFavorite(id = '') {
+  let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
+  //   let favorite = dataLocalStorage ? JSON.parse(dataLocalStorage) : [];
+  // const card = this.cards.find(elem => elem.idDrink === id);
+  let cocktail =
+    favorite.find(elem => elem.idDrink === id) ||
+    render.cards.find(elem => elem.idDrink === id);
+  console.log(cocktail);
+  if (!cocktail) {
+    favorite.push(cocktail);
+  } else {
+    favorite = favorite.filter(elem => elem.idDrink !== id);
+  }
+  localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
 }

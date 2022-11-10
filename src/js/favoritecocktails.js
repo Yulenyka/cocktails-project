@@ -42,19 +42,19 @@ export function showAllCoctails(gallery) {
 
     const buttonMore = document.querySelectorAll('.button-more');
     buttonMore.forEach(elem => {
-      console.log(elem);
+      // console.log(elem);
       elem.addEventListener('click', e => {
         let cocktail = favoriteCocktails.find(
           elem => elem.idDrink === e.target.dataset.id
         );
-        console.log(cocktail);
+        // console.log(cocktail);
         renderModalCocktail(cocktail);
         openModalCocktail();
       });
     });
     const buttonRemove = document.querySelectorAll('.button-remove');
     buttonRemove.forEach(elem => {
-      console.log(elem);
+      // console.log(elem);
       elem.addEventListener('click', removeFromFavorite);
     });
   } else {
