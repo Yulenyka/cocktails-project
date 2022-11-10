@@ -1,3 +1,15 @@
+.favorite-cocktails {
+    padding-top: 60px;
+    padding-bottom: 226px;
+
+    @media screen and (min-width: $tab) {
+        padding-bottom: 264px;
+    }
+
+    @media screen and (min-width: $desk) {
+        padding-bottom: 484px;
+    }
+}
 .favorite-cocktails__title {
     margin-bottom: 60px;
     margin-top: 60px;

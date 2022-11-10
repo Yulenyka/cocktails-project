@@ -1,21 +1,24 @@
 import ApiService from './apiservice';
-import {} from './cocktails';
+import { FAVORITE_KEY } from './cocktails';
+import Render from './render';
 const gallery = document.querySelector('.gallery');
+const galleryCocktailsTitle = document.querySelector(
+  '.favorite-cocktails__title'
+);
+FAVORITE_KEY = 'favorite'; //del
 // const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
-// const fav = 'favorite-cocktails'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Наташи
+let render = new Render();
+apiService.getCocktailRandom(3).then(data => {
+  console.log(data);
+  localStorage.setItem(FAVORITE_KEY, JSON.stringify(data));
+});
 
-// apiService.getCocktailRandom(3).then(data => {
-//   console.log(data);
-//   localStorage.setItem('fav', JSON.stringify(data));
-// });
-
-export function showCoctails(gallery) {
+export function showAllCoctails(gallery) {
+  let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY));
   if (localStorage.getItem(FAVORITE_KEY)) {
-    let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY));
-    console.log(favoriteCocktails);
     const markupCocktails = favoriteCocktails
-      .map(({ strDrink, strDrinkThumb }) => {
+      .map(({ strDrink, strDrinkThumb, idDrink }) => {
         return `<li class="cocktails__item">
                 <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo">
                 <h3 class="cocktails__name">${strDrink}</h3>
@@ -24,9 +27,8 @@ export function showCoctails(gallery) {
                         <button class="button-more" type="submit">Learn more
                         </button>
                     </li>
-                    <li class="button__item">
-                        <button class="button-add" type="submit">Add to
-                        </button>
+                  <li class="button__item">
+                     <button class='button-remove' type="button" data-id="${idDrink}" data-action="favorite">Remove</button>
                     </li>
                 </ul>
               </li>
@@ -35,25 +37,22 @@ export function showCoctails(gallery) {
       .join('');
     gallery.innerHTML = markupCocktails;
   } else {
-    const markupCocktails = favoriteCocktails
-      .map(({ strDrink, strDrinkThumb }) => {
-        return `<p class="no__favorite-cocktails">
+    const markupCocktails = `<p class="no__favorite-cocktails">
       You haven't added any <br />
       favorite cocktails yet
-    </p>
-              `;
-      })
-      .join('');
-    gallery.innerHTML = markupCocktails;
+    </p>`;
+    galleryCocktailsTitle.insertAdjacentHTML('afterend', markupCocktails);
   }
 }
 
-showCoctails(gallery);
-console.log('Hallo');
+showAllCoctails(gallery);
 
-// function learnMoreCocktail(e) {
-//   e.preventDefault();
-//   const modal = document.querySelector('.modal');
-// }
-
-// buttonMore.addEventListener('click', learnMoreCocktail);
+const buttonRemove = document.querySelectorAll('.button-remove');
+console.log(buttonRemove);
+buttonRemove.forEach(elem =>
+  elem.addEventListener('click', e => {
+    console.dir(e.target.dataset.id);
+    // console.log(123);
+    render.addToFavorite(e.target.dataset.id);
+  })
+);
