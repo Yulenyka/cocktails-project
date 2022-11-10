@@ -1,59 +1,80 @@
-import ApiService from './apiservice';
-import {} from './cocktails';
+// import ApiService from './apiservice';
+import Render, { FAVORITE_KEY } from './render';
+import { openModalCocktail, renderModalCocktail } from './modalcocktail';
 const gallery = document.querySelector('.gallery');
+const galleryCocktailsTitle = document.querySelector(
+  '.favorite-cocktails__title'
+);
 // const buttonMore = document.querySelector('.button-more');
-let apiService = new ApiService();
-// const fav = 'favorite-cocktails'; // localStorage.setItem(DATA_KEY, JSON.stringify(valueForm)) DATA_KEY !!! как у Наташи
+// let apiService = new ApiService();
+// let render = new Render();
 
 // apiService.getCocktailRandom(3).then(data => {
-//   console.log(data);
-//   localStorage.setItem('fav', JSON.stringify(data));
+//   localStorage.setItem(FAVORITE_KEY, JSON.stringify(data));
+//   showAllCoctails(gallery); // удалить до пуша
 // });
 
-export function showCoctails(gallery) {
-  if (localStorage.getItem(FAVORITE_KEY)) {
-    let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY));
-    console.log(favoriteCocktails);
+export function showAllCoctails(gallery) {
+  let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
+  // console.log(favoriteCocktails);
+
+  if (localStorage.getItem(FAVORITE_KEY) && favoriteCocktails.length > 0) {
     const markupCocktails = favoriteCocktails
-      .map(({ strDrink, strDrinkThumb }) => {
+      .map(({ strDrink, strDrinkThumb, idDrink, strIngredient }) => {
+        // console.log(strIngredient);
         return `<li class="cocktails__item">
                 <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo">
                 <h3 class="cocktails__name">${strDrink}</h3>
                 <ul class="button-list">
                     <li class="button__item">
-                        <button class="button-more" type="submit">Learn more
+                        <button class="button-more" type="button" data-id="${idDrink}">Learn more
                         </button>
                     </li>
-                    <li class="button__item">
-                        <button class="button-add" type="submit">Add to
-                        </button>
-                    </li>
+                  <li class="button__item">
+                    <button class='button-remove' type="button" data-id="${idDrink}" data-action="favorite">Remove</button>
+                  </li>
                 </ul>
               </li>
               `;
       })
       .join('');
     gallery.innerHTML = markupCocktails;
+
+    const buttonMore = document.querySelectorAll('.button-more');
+    buttonMore.forEach(elem => {
+      // console.log(elem);
+      elem.addEventListener('click', e => {
+        let cocktail = favoriteCocktails.find(
+          elem => elem.idDrink === e.target.dataset.id
+        );
+        // console.log(cocktail);
+        renderModalCocktail(cocktail);
+        openModalCocktail();
+      });
+    });
+    const buttonRemove = document.querySelectorAll('.button-remove');
+    buttonRemove.forEach(elem => {
+      // console.log(elem);
+      elem.addEventListener('click', removeFromFavorite);
+    });
   } else {
-    const markupCocktails = favoriteCocktails
-      .map(({ strDrink, strDrinkThumb }) => {
-        return `<p class="no__favorite-cocktails">
+    const markupCocktails = `<li>
+    <p class="no__favorite-cocktails">
       You haven't added any <br />
       favorite cocktails yet
     </p>
-              `;
-      })
-      .join('');
+    </li>`;
     gallery.innerHTML = markupCocktails;
   }
 }
 
-showCoctails(gallery);
-console.log('Hallo');
-
-// function learnMoreCocktail(e) {
-//   e.preventDefault();
-//   const modal = document.querySelector('.modal');
-// }
-
-// buttonMore.addEventListener('click', learnMoreCocktail);
+const removeFromFavorite = e => {
+  let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY));
+  favoriteCocktails = favoriteCocktails.filter(
+    elem => elem.idDrink !== e.target.dataset.id
+  );
+  console.log(favoriteCocktails);
+  localStorage.setItem(FAVORITE_KEY, JSON.stringify(favoriteCocktails));
+  showAllCoctails(gallery);
+};
+showAllCoctails(gallery);

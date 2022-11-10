@@ -1,3 +1,5 @@
 import { markUpRandomCocktails } from './js/cocktails';
-import { themeSwitcher } from './js/darkThemeToggle';
 import { showNavigation } from './js/heroMobileSelect';
+import './js/darkThemeToggle';
+import './js/mobileMenu';
+import heroSearchLetter from './js/heroSearchLetter';
