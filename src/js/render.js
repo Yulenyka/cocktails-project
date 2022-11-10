@@ -1,5 +1,5 @@
 import ApiService from './apiservice';
-const FAVORITE_KEY = 'favorite';
+export const FAVORITE_KEY = 'favorite';
 export default class Render {
   constructor() {
     this.gallery = document.querySelector('.cocktails-list');
