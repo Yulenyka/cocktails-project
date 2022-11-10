@@ -2,10 +2,9 @@ import ApiService from './apiservice';
 import { FAVORITE_KEY } from './cocktails';
 import Render from './render';
 const gallery = document.querySelector('.gallery');
-const galleryCocktailsTitle = document.querySelector(
-  '.favorite-cocktails__title'
-);
-FAVORITE_KEY = 'favorite';
+const galleryCocktailsTitle = document.querySelector('.favorite-cocktails__title');
+
+// FAVORITE_KEY = 'favorite';
 // const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
 let render = new Render();
