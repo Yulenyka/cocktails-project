@@ -1,18 +1,17 @@
 import ApiService from './apiservice';
 import { FAVORITE_KEY } from './render';
-import Render from './render';
 const gallery = document.querySelector('.gallery');
 const galleryCocktailsTitle = document.querySelector(
   '.favorite-cocktails__title'
 );
-// FAVORITE_KEY = 'favorite'; //del
+FAVORITE_KEY = 'favorite'; //del
 // const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
-let render = new Render();
-apiService.getCocktailRandom(3).then(data => {
-  console.log(data);
-  localStorage.setItem(FAVORITE_KEY, JSON.stringify(data));
-});
+
+// apiService.getCocktailRandom(3).then(data => {
+//   console.log(data);
+//   localStorage.setItem(FAVORITE_KEY, JSON.stringify(data));
+// });
 
 export function showAllCoctails(gallery) {
   let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY));
