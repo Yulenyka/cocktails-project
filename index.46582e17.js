@@ -1,2 +1,2 @@
 var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof self?self:"undefined"!=typeof window?window:"undefined"!=typeof global?global:{},n={},o={},r=e.parcelRequire1208;null==r&&((r=function(e){if(e in n)return n[e].exports;if(e in o){var r=o[e];delete o[e];var l={id:e,exports:{}};return n[e]=l,r.call(l.exports,l,l.exports),l.exports}var i=new Error("Cannot find module '"+e+"'");throw i.code="MODULE_NOT_FOUND",i}).register=function(e,n){o[e]=n},e.parcelRequire1208=r);new(0,r("bwowl").default);
-//# sourceMappingURL=favorite-cocktails.a7785dfc.js.map
+//# sourceMappingURL=index.46582e17.js.map
