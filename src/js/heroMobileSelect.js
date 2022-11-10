@@ -3,6 +3,6 @@ const heroSelect = document.querySelector('.hero__select');
 
 heroSelect.addEventListener('click', showNavigation);
 
-function showNavigation() {
+export function showNavigation() {
   heroNav.classList.toggle('is-hidden');
 }

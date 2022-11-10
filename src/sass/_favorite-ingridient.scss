@@ -1,0 +1,140 @@
+.favorite-ingridient{
+    padding-top: 60px;
+    padding-bottom: 226px;
+    @media screen and (min-width: $tab) {
+        padding-bottom: 264px;  
+    }
+        @media screen and (min-width: $desk) {
+            padding-bottom: 484px;
+        }
+
+}
+.favorite-ingridient__title {
+    margin-bottom: 60px;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 1.91;
+    text-align: center;
+    color: $textColorBlack;
+    @media screen and (min-width: $tab) {
+        font-family: 'Roboto';
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 1.19;
+        }
+    
+        @media screen and (min-width: $desk) {
+            font-family: 'Poppins';
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 1.5;
+        }
+}
+
+.drink__ingridient {
+    margin-bottom: 20px;
+    font-family: $fRoboto;
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 1.61;
+    color: $textColorBlack;
+    @media screen and (min-width: $tab) {
+        margin-bottom: 28px;
+        font-size: 28px;
+        line-height: 1.18;
+    }
+        @media screen and (min-width: $desk) {
+            font-size: 32px;
+            line-height: 1.19;
+        }
+}
+
+.drink__type {
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #000000;
+    @media screen and (min-width: $tab) {
+        margin-bottom: 28px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: $textColorGray;
+    }
+        @media screen and (min-width: $tab) {
+            margin-bottom: 48px;
+        }
+}
+
+p.no__favorite-ingridient {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 3;
+    text-align: center;
+    color: $textColorBlack;
+    @media screen and (min-width: $tab) {
+            font-size: 24px;
+            line-height: 2.5;
+        }
+    
+        @media screen and (min-width: $desk) {
+            font-size: 32px;
+            line-height: 2.25;
+        }
+}
+
+.favorite-ingridient__list {
+    @media screen and (min-width: $tab) {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+} 
+
+.favorite-ingridient__item {
+    padding: 20px;
+    margin: 0 auto;
+    width: 100%;
+    border: 1px solid $accentColor;
+    border-radius: 4px;
+    @media screen and (min-width: $mob2) {
+        width: 280px;
+        height: 177px;
+    }
+    @media screen and (min-width: $tab) {
+        margin: 0;
+        max-width: 336px;
+        height: 205px;
+        width: calc((100% - 32px)/ 2);
+    }
+    @media screen and (min-width: $desk) {
+        min-width: 395px;
+        height: 221px;
+        width: calc((100% - 2 * 32px)/ 3);
+    }
+}
+
+.favorite-ingridient__item:not(:last-child) {
+    @media screen and (max-width: $tab) {
+       margin-bottom: 20px;     
+    } 
+}
+
+.favorite-ingridient__item:last-child {
+    @media screen and (max-width: $tab) {
+        margin-bottom: 28px;
+    }
+}
+
+.modal {
+    position: absolute;
+    left: 100px;
+    top: 200px;
+    background-color: #f3f8ff;
+    padding: 0;
+    border: 5px solid #c6cfff;
+    width: 500px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: none;
+}

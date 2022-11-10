@@ -19,11 +19,10 @@ export default function createMarkUpCocktails(gallery, cards = []) {
                      } type="button" data-id="${idDrink}" data-action="favorite">${
         cardFavorite ? 'Remove' : 'Add to'
       }
-                        </button>  
+                        </button>
                     </li>
                 </ul>
               </li>`;
     })
     .join('');
-  gallery.insertAdjacentHTML('afterbegin', markUp);
 }
