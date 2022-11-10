@@ -1,0 +1,17 @@
+@mixin position($type: relative) {
+  position: $type;
+  top: 0;
+  left: 0;
+}
+
+@mixin photo($photo) {
+  background-image: url($photo);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
