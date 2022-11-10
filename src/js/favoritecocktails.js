@@ -1,5 +1,5 @@
 import ApiService from './apiservice';
-import { FAVORITE_KEY } from './cocktails';
+// import { FAVORITE_KEY } from './cocktails';
 import Render from './render';
 const gallery = document.querySelector('.gallery');
 const galleryCocktailsTitle = document.querySelector('.favorite-cocktails__title');
