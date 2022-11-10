@@ -29,20 +29,34 @@ function onEscClick(e) {
 }
 
 export function renderModalCocktail(cocktail) {
+  const entries = Object.entries(cocktail);
+  const ingridients = [];
+  entries.map(elem => {
+    if (elem[0].includes('strIngredient') && elem[1]) {
+      ingridients.push(elem[1]);
+    }
+  });
+  console.log(ingridients);
+  const ingidientsMarkup = ingridients
+    .map(
+      ingridient =>
+        `<li class="ingredients__item">
+      <a href="" class="ingredients__link">
+        ${ingridient}
+      </a>
+    </li>`
+    )
+    .join('');
+
   const { strDrink, strDrinkThumb, idDrink, strInstructions } = cocktail;
-  const markup = `<button class="modal-button__close" type="button">
-              <svg class="modal-button__icon" width="32" height="32">
-                  <use href="#"></use>
-              </svg>
-          </button>
-          <div class="cocktails-info">
+  const markup = `<div class="cocktails-info">
               <img class="cocktails-info" src="${strDrinkThumb}" alt="#" width="320" height="320">
               <h2 class="cocktails-info__title">Negroni</h2>
               <div class="ingredients">
                   <h3 class="ingredients__title">Ingredients</h3>
                   <p class="ingredients__text">Per cocktail</p>
                   <ul class="ingredients__list">
-                      <li class="ingredients__item"><a href="" class="ingredients__link">zsfzffff</a></li>
+                    ${ingidientsMarkup}  
                   </ul>
               </div>
           </div>
