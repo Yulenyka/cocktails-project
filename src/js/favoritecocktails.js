@@ -1,5 +1,5 @@
 import ApiService from './apiservice';
-import { FAVORITE_KEY } from './render';
+import Render, { FAVORITE_KEY } from './render';
 const gallery = document.querySelector('.gallery');
 const galleryCocktailsTitle = document.querySelector(
   '.favorite-cocktails__title'
@@ -7,6 +7,7 @@ const galleryCocktailsTitle = document.querySelector(
 FAVORITE_KEY = 'favorite'; //del
 // const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
+let render = new Render();
 
 // apiService.getCocktailRandom(3).then(data => {
 //   console.log(data);
