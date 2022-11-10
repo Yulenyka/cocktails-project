@@ -1,32 +1,68 @@
-<header class="header" id="header">
-  <div class="header__container container">
-    <nav class="navigation">
-      <div class="navigation__cocktail">
-        <a class="navigation__cocktail-link" href="">COCKTAILS</a>
-      </div>
-      <ul class="navigation__list">
-        <li class="navigation__list-item">
-          <a class="navigation__item-link" href="">Home</a>
-        </li>
-        <li class="navigation__list-item">
-          <a class="navigation__item-link" href="">Favorite</a>
-        </li>
-      </ul>
-    </nav>
-    <input class="input-field" type="text" name="input" placeholder="Search" />
-    <!-- <div class="toggle-teme"></div> -->
+<header class="header page-header">
+  <div class="container page-header__container">
+    <a class="logo visible" href="./index.html" alt="logo company"></a>
+    <div class="page-header__box" data-box>
+      <form class="search-form visible">
+        <!-- <div class="search-form__field"> -->
+        <input
+          class="search-form__input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search ..."
+          aria-label="search input field"
+        />
+        <!-- </div> -->
+      </form>
+      <nav class="nav" aria-label="navigation menu" data-nav>
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="./index.html">Home</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#"
+              >Favorite<span class="nav__link-line"></span>
+            </a>
+            <ul class="nav__sublist">
+              <li class="nav__subitem">
+                <a class="nav__sublink" href="./favorite-cocktails.html"
+                  >Favorite cocktails</a
+                >
+              </li>
+              <li class="nav__subitem">
+                <a class="nav__sublink" href="./favorite-cocktails.html"
+                  >Favorite ingredients</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="theme-desk">
+      <label class="checkbox">
+        <input class="checkbox-input" name="theme" type="checkbox" />
+        <p class="ligth">Light</p>
+        <div class="checkbox-box"></div>
+        <p class="darkk">Dark</p>
+      </label>
+    </div>
+
+    <button
+      class="burger"
+      data-burger
+      aria-label="menu button"
+      aria-expanded="false"
+    >
+      <!-- <span class="burger__line"></span> -->
+      <svg class="burger-menu__icon" width="32" height="32">
+        <use class="menu__open-icon" href="./images/icons.svg#icon-menu"></use>
+        <use
+          class="menu__close-icon"
+          href="./images/icons.svg#icon-close"
+        ></use>
+      </svg>
+    </button>
   </div>
 </header>
-
-<!-- <ul class="nav__sublist">
-        <li class="nav__subitem">
-          <a class="nav__sublink" href="./favorite-cocktails.html"
-            >Favorite cocktails</a
-          >
-        </li>
-        <li class="nav__subitem">
-          <a class="nav__sublink" href="./favorite-ingridient.html"
-            >Favorite ingredients</a
-          >
-        </li>
-      </ul> -->
