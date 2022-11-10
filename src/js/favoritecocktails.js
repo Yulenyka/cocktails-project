@@ -5,7 +5,7 @@ const gallery = document.querySelector('.gallery');
 const galleryCocktailsTitle = document.querySelector(
   '.favorite-cocktails__title'
 );
-FAVORITE_KEY = 'favorite'; //del
+FAVORITE_KEY = 'favorite';
 // const buttonMore = document.querySelector('.button-more');
 let apiService = new ApiService();
 let render = new Render();
