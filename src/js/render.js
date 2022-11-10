@@ -1,5 +1,3 @@
-// import createMarkUpCocktails from './createMarkUpCocktails';
-// import createMarkUpMissingCocktails from './createMarkUpMissingCocktails';
 import ApiService from './apiservice';
 const FAVORITE_KEY = 'favorite';
 export default class Render {
@@ -13,6 +11,7 @@ export default class Render {
   // Функція яка рендерить розмітку по певному заданому символу
   async sectionSelectionFoRender(letter) {
     this.cards = await this.newsApi.getCocktailByFirstLetter(letter);
+    this.resetMarkUp();
     if (this.cards.length === 0) {
       this.renderNotFound();
     } else {
@@ -67,7 +66,7 @@ export default class Render {
   // Функція відмальовки рандомних зображень
   async markUpRandomCocktails() {
     this.cards = await this.newsApi.getCocktailRandom(9);
-    this.gallery.innerHTML = '';
+    this.resetMarkUp();
     this.createMarkUpCocktails();
   }
   // Функція наявності картки в LocalStr
@@ -103,5 +102,10 @@ export default class Render {
       favorite = favorite.filter(elem => elem.idDrink !== id);
     }
     localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
+  }
+  // Функція очистки відмальовки
+  resetMarkUp() {
+    this.gallery.innerHTML = '';
+    this.wrapper.innerHTML = '';
   }
 }
