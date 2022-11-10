@@ -79,7 +79,7 @@ export default class Render {
   changeFavoriteBtn(btn) {
     const id = btn.dataset.id;
     let favorite = this.getFavorite();
-    const inArray = favorite.some(elem => elem.idDrink === id);
+    const inArray = favorite.some(elem => elem?.idDrink === id);
     if (inArray) {
       btn.textContent = 'Remove';
       btn.classList.add('button-remove');
@@ -94,8 +94,8 @@ export default class Render {
   // Функція додавання, видалення з улюблених, робота з ЛокалСтор.
   addToFavorite(id = '') {
     let favorite = this.getFavorite();
-    const card = this.cards.find(elem => elem.idDrink === id);
-    const inArray = favorite.some(elem => elem.idDrink === id);
+    const card = this.cards.find(elem => elem?.idDrink === id);
+    const inArray = favorite.some(elem => elem?.idDrink === id);
     if (!inArray) {
       favorite.push(card);
     } else {
