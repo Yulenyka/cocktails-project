@@ -5,6 +5,7 @@ const gallery = document.querySelector('.gallery');
 const galleryCocktailsTitle = document.querySelector(
   '.favorite-cocktails__title'
 );
+const messageCocktails = document.querySelector('.message-cocktails');
 // const buttonMore = document.querySelector('.button-more');
 // let apiService = new ApiService();
 // let render = new Render();
@@ -20,7 +21,7 @@ export function showAllCoctails(gallery) {
 
   if (localStorage.getItem(FAVORITE_KEY) && favoriteCocktails.length > 0) {
     const markupCocktails = favoriteCocktails
-      .map(({ strDrink, strDrinkThumb, idDrink, strIngredient }) => {
+      .map(({ strDrink, strDrinkThumb, idDrink }) => {
         // console.log(strIngredient);
         return `<li class="cocktails__item">
                 <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo">
