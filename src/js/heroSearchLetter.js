@@ -9,7 +9,7 @@ console.log(gallery);
 
 const render = new Render();
 
-letterList.addEventListener('click', showCoctails);
+if (letterList) letterList.addEventListener('click', showCoctails);
 
 async function showCoctails(event) {
   const refButton = document.querySelector('.hero__btn-active');

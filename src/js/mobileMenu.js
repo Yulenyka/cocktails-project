@@ -10,11 +10,8 @@ const logo = document.querySelector('.logo');
 const searchForm = document.querySelector('.search-form');
 const themeDesk = document.querySelector('.theme-desk');
 
-
-
 const navItems = nav.querySelectorAll('a');
 const form = document.querySelector('.search-form');
-
 
 burger.addEventListener('click', () => {
   body.classList.toggle('stop-scroll');
@@ -30,8 +27,8 @@ burger.addEventListener('click', () => {
 });
 
 navItems.forEach(el => {
-  el.addEventListener('click', () => {
-    el.preventDefault();
+  el.addEventListener('click', e => {
+    e.preventDefault();
     classUtil();
   });
 });
@@ -51,8 +48,4 @@ function classUtil() {
   logo.classList.remove('visibletab');
   searchForm.classList.add('visible');
   themeDesk.classList.remove('visible');
-
-
 }
-
-
