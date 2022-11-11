@@ -80,7 +80,7 @@
 .logo {
   background-image: url('../images/logo/Logo.png');
   background-repeat: no-repeat;
-
+  background-size: contain ;
   background-position: center;
 
 
@@ -103,7 +103,7 @@
     @media screen and (max-width: $desk) {
  width: 100px;
     height: 35px;
-      background-size: contain ;
+    
     }
   }
 
