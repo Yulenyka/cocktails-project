@@ -1,19 +1,7 @@
 // import ApiService from './apiservice';
-import Render, { FAVORITE_KEY } from './render';
+import { FAVORITE_KEY } from './render';
 import { openModalCocktail, renderModalCocktail } from './modalcocktail';
 const gallery = document.querySelector('.favorite-cocktails__list');
-const galleryCocktailsTitle = document.querySelector(
-  '.favorite-cocktails__title'
-);
-const messageCocktails = document.querySelector('.message-cocktails');
-// const buttonMore = document.querySelector('.button-more');
-// let apiService = new ApiService();
-// let render = new Render();
-
-// apiService.getCocktailRandom(3).then(data => {
-//   localStorage.setItem(FAVORITE_KEY, JSON.stringify(data));
-//   showAllCoctails(gallery); // удалить до пуша
-// });
 
 export function showAllCoctails(gallery) {
   let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
