@@ -34,6 +34,7 @@ function onEscClick(e) {
 }
 
 export function renderModalCocktail(cocktail) {
+  console.log(cocktail);
   const entries = Object.entries(cocktail);
   const ingridients = [];
   entries.map(elem => {

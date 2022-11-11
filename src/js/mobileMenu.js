@@ -27,8 +27,8 @@ burger.addEventListener('click', () => {
 });
 
 navItems.forEach(el => {
-  el.addEventListener('click', e => {
-    e.preventDefault();
+  el.addEventListener('click', () => {
+    el.preventDefault();
     classUtil();
   });
 });
