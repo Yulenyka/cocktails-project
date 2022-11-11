@@ -1,7 +1,7 @@
 // import ApiService from './apiservice';
 import Render, { FAVORITE_KEY } from './render';
 import { openModalCocktail, renderModalCocktail } from './modalcocktail';
-const gallery = document.querySelector('.gallery');
+const gallery = document.querySelector('.favorite-cocktails__list');
 const galleryCocktailsTitle = document.querySelector(
   '.favorite-cocktails__title'
 );
