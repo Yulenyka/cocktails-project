@@ -1,38 +1,29 @@
+import Render from './render';
 import ApiService from './apiservice';
-
 let apiService = new ApiService();
+const render = new Render();
 
-// apiService.getCocktailRandom(9).then(resp => {
-//   // массив указанного числа коктейлей или пустой массив, если не найдено ни одного
-//   console.log(resp);
-// });
+const searchForm = document.querySelector('.search-form');
+const gallery = document.querySelector('.cocktails-list');
+console.log(gallery);
 
-// apiService.getCocktailByName('beer').then(resp => {
-//   // возвращает массив коктейлей по имени name, или пустой массив
-//   // если ничего не найдено, возвращает пустой массив
-//   console.log(resp);
-// });
+let coctailName = '';
 
-// apiService.getCocktailById(12618).then(resp => {
-//   // idCocktail - id коктейля возвращает массив с одним коктейлем
-//   // возвращает пустой массив, если ничего не найдено
-//   console.log(resp);
-// });
+searchForm.addEventListener('submit', searchCoctail);
 
-// apiService.getCocktailByFirstLetter('b').then(resp => {
-//   // Возвращает массив коктейлей по первой букве/цифре
-//   // возвращает пустой массив, если ничего не найдено
-//   console.log(resp);
-// });
-
-// apiService.getCocktailIngrName('campari').then(resp => {
-//   // возвращает ингридиет по имени name.
-//   // возвращает пустой массив, если ничего не найдено
-//   console.log(resp);
-// });
-
-// apiService.getCocktailIngrId(83).then(resp => {
-//   // возвращает ингридиет по id.
-//   // возвращает пустой массив, если ничего не найдено
-//   console.log(resp);
-// });
+async function searchCoctail(e) {
+  e.preventDefault();
+  coctailName = searchForm.searchQuery.value.trim();
+  if (coctailName) {
+    apiService.getCocktailByName(coctailName).then(r => {
+      if (r.length === 0) {
+        render.resetMarkUp();
+        render.renderNotFound();
+        return;
+      }
+      render.cards = r;
+      render.resetMarkUp();
+      render.createMarkUpCocktails();
+    });
+  }
+}

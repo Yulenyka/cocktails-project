@@ -110,5 +110,6 @@ export default class Render {
   resetMarkUp() {
     if (this.gallery) this.gallery.innerHTML = '';
     if (this.wrapper) this.wrapper.innerHTML = '';
+    document.querySelector('.cocktails').classList.remove('is-none');
   }
 }

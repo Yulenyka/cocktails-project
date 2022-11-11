@@ -1,9 +1,13 @@
 import Render, { FAVORITE_KEY } from './render';
+import { openModalIngridient, renderModalIngridient } from './modalingr';
+import ApiService from './apiservice';
 
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
+
 let render = new Render();
+let apiService = new ApiService();
 
 export function openModalCocktail() {
   backdrop.classList.remove('is-hidden');
@@ -47,9 +51,9 @@ export function renderModalCocktail(cocktail) {
     .map(
       ingridient =>
         `<li class="ingredients__item">
-      <a href="" class="ingredients__link">
-        &#10038 ${ingridient}
-      </a>
+      <p class="ingredients__link">
+        &#10038 <span>${ingridient}</span>
+      </p>
     </li>`
     )
     .join('');
@@ -75,6 +79,26 @@ export function renderModalCocktail(cocktail) {
                 `;
 
   modalCocktail.innerHTML = markup;
+
+  // let ingredientsItem = document.querySelectorAll('.ingredients__item');
+  let ingredientsList = document.querySelector('.ingredients__list');
+  ingredientsList.addEventListener('click', e => {
+    // let a = e.target.textContent;
+    // .slice(3, e.target.textContent.length);
+    let ingridientName = '';
+    if (e.target.tagName === 'P') {
+      ingridientName = e.target.firstElementChild.textContent
+        .toLowerCase()
+        .split(' ')
+        .join('+');
+      console.log(ingridientName);
+    } else if (e.target.tagName === 'SPAN') {
+      ingridientName = e.target.textContent.toLowerCase().split(' ').join('+');
+      console.log(ingridientName);
+    }
+    renderModalIngridient(ingridientName);
+    openModalIngridient();
+  });
   updateButton();
 }
 
