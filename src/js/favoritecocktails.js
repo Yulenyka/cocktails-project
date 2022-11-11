@@ -12,7 +12,7 @@ export function showAllCoctails(gallery) {
       .map(({ strDrink, strDrinkThumb, idDrink }) => {
         // console.log(strIngredient);
         return `<li class="cocktails__item">
-                <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo">
+                <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo"/>
                 <h3 class="cocktails__name">${strDrink}</h3>
                 <ul class="button-list">
                     <li class="button__item">
@@ -23,8 +23,7 @@ export function showAllCoctails(gallery) {
                     <button class='button-remove' type="button" data-id="${idDrink}" data-action="favorite">Remove</button>
                   </li>
                 </ul>
-              </li>
-              `;
+              </li>`;
       })
       .join('');
     gallery.innerHTML = markupCocktails;
