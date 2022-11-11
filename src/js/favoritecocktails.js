@@ -5,6 +5,7 @@ const gallery = document.querySelector('.gallery');
 const galleryCocktailsTitle = document.querySelector(
   '.favorite-cocktails__title'
 );
+const messageCocktails = document.querySelector('.message-cocktails');
 // const buttonMore = document.querySelector('.button-more');
 // let apiService = new ApiService();
 // let render = new Render();
@@ -58,13 +59,13 @@ export function showAllCoctails(gallery) {
       elem.addEventListener('click', removeFromFavorite);
     });
   } else {
-    const markupCocktails = `<li>
+    const addMessageCocktails = `<li>
     <p class="no__favorite-cocktails">
       You haven't added any <br />
       favorite cocktails yet
     </p>
     </li>`;
-    gallery.innerHTML = markupCocktails;
+    messageCocktails.innerHTML = addMessageCocktails;
   }
 }
 
