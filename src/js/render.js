@@ -1,5 +1,5 @@
 import ApiService from './apiservice';
-const FAVORITE_KEY = 'favorite';
+export const FAVORITE_KEY = 'favorite';
 export default class Render {
   constructor() {
     this.gallery = document.querySelector('.cocktails-list');
@@ -31,6 +31,8 @@ export default class Render {
   // Функція, яка створює строку розмітки галереї і додає її до DOM
   createMarkUpCocktails() {
     const favorite = this.getFavorite();
+    console.log('favorite :>> ', favorite);
+    console.log('this.cards :>> ', this.cards);
     let markUp = this.cards
       .map(({ strDrink, strDrinkThumb, idDrink }) => {
         const cardFavorite = favorite.find(elem => elem.idDrink === idDrink);
@@ -45,7 +47,7 @@ export default class Render {
                     <li class="button__item">
                      <button class="${
                        cardFavorite ? 'button-remove' : 'button-add'
-                     } type="button" data-id="${idDrink}" data-action="favorite">${
+                     }" type="button" data-id="${idDrink}" data-action="favorite">${
           cardFavorite ? 'Remove' : 'Add to'
         }
                         </button>  
@@ -54,7 +56,7 @@ export default class Render {
               </li>`;
       })
       .join('');
-    this.gallery.insertAdjacentHTML('afterbegin', markUp);
+    if (this.gallery) this.gallery.insertAdjacentHTML('afterbegin', markUp);
   }
   // Функція створення рядку розмитки, коли по заданому символу
   createMarkUpMissingCocktails() {
@@ -79,7 +81,7 @@ export default class Render {
   changeFavoriteBtn(btn) {
     const id = btn.dataset.id;
     let favorite = this.getFavorite();
-    const inArray = favorite.some(elem => elem.idDrink === id);
+    const inArray = favorite.some(elem => elem?.idDrink === id);
     if (inArray) {
       btn.textContent = 'Remove';
       btn.classList.add('button-remove');
@@ -94,8 +96,8 @@ export default class Render {
   // Функція додавання, видалення з улюблених, робота з ЛокалСтор.
   addToFavorite(id = '') {
     let favorite = this.getFavorite();
-    const card = this.cards.find(elem => elem.idDrink === id);
-    const inArray = favorite.some(elem => elem.idDrink === id);
+    const card = this.cards.find(elem => elem?.idDrink === id);
+    const inArray = favorite.some(elem => elem?.idDrink === id);
     if (!inArray) {
       favorite.push(card);
     } else {
@@ -105,7 +107,7 @@ export default class Render {
   }
   // Функція очистки відмальовки
   resetMarkUp() {
-    this.gallery.innerHTML = '';
-    this.wrapper.innerHTML = '';
+    if (this.gallery) this.gallery.innerHTML = '';
+    if (this.wrapper) this.wrapper.innerHTML = '';
   }
 }
