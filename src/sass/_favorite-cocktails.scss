@@ -48,11 +48,11 @@
         }
 }
 
-.gallery {
-    @media screen and (max-width: 767.97px) {
+.gallery {   
         display: block;
+        justify-content: center;
         margin-bottom: 20px;
-    }
+    
 
     @media screen and (min-width: $tab) {
         display: flex;

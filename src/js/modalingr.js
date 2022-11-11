@@ -5,7 +5,7 @@ const modalIngridient = document.querySelector('.modal-content');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
 const btnModalClose = document.querySelector('#ingridient-close');
 
-let render = new Render();
+// let render = new Render();
 let apiService = new ApiService();
 
 export function openModalIngridient() {
