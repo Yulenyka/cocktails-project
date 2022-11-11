@@ -21,7 +21,7 @@ export function showAllCoctails(gallery) {
 
   if (localStorage.getItem(FAVORITE_KEY) && favoriteCocktails.length > 0) {
     const markupCocktails = favoriteCocktails
-      .map(({ strDrink, strDrinkThumb, idDrink, strIngredient }) => {
+      .map(({ strDrink, strDrinkThumb, idDrink }) => {
         // console.log(strIngredient);
         return `<li class="cocktails__item">
                 <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo">
@@ -59,13 +59,13 @@ export function showAllCoctails(gallery) {
       elem.addEventListener('click', removeFromFavorite);
     });
   } else {
-    const addMessageCocktails = `<li>
+    const markupCocktails = `<li>
     <p class="no__favorite-cocktails">
       You haven't added any <br />
       favorite cocktails yet
     </p>
     </li>`;
-    messageCocktails.innerHTML = addMessageCocktails;
+    gallery.innerHTML = markupCocktails;
   }
 }
 

@@ -71,6 +71,12 @@ export function renderModalCocktail(cocktail) {
                 `;
 
   modalCocktail.innerHTML = markup;
+  // const ingredientsList = document.querySelector('ingredients__list');
+  // // const ingridientItem = document.querySelectorAll('ingredients__item');
+  // ingredientsList.addEventListener('click', e => {
+  //   console.log('event.target: ', e.target);
+  //   console.log('event.currentTarget: ', e.currentTarget);
+  // });
   updateButton();
 }
 
