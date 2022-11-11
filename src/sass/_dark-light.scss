@@ -1,6 +1,6 @@
 .theme-desk {
-  opacity: 0;
   position: absolute;
+  display: none;
 
   @media screen and (min-width: 769px) {
     opacity: 1;
@@ -12,7 +12,7 @@
   }
 }
 .theme-desk.visible {
-  opacity: 1;
+  display: block;
 
   @media screen and (min-width: 481px) {
     @media screen and (max-width: 768px) {

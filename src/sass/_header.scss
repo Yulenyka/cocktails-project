@@ -63,7 +63,7 @@
       align-items: center;
       justify-content: space-between;
       flex-direction: row-reverse;
-      width: 335px;
+      width: 655px;
     }
 
     @media screen and (min-width: $desk) {
@@ -78,7 +78,7 @@
 }
 
 .logo {
-  background-image: url('../images/logo/Logo.png');
+  background-image: url('../images/logo/logo.png');
   background-repeat: no-repeat;
   background-size: contain ;
   background-position: center;
@@ -87,7 +87,7 @@
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url('../images/logo/Logo@2x.png');
+    background-image: url('../images/logo/logo@2x.png');
   }
 
   @media screen and (max-width: 768px) {
@@ -101,9 +101,9 @@
 
   @media screen and (min-width: 769px) {
     @media screen and (max-width: $desk) {
- width: 100px;
-    height: 35px;
-    
+ width: 124px;
+    height: 34px;
+    margin-top: -10px;
     }
   }
 
@@ -193,7 +193,7 @@ nav.nav {
   @media screen and (min-width: 769px) {
     @media screen and (max-width: $desk) {
       opacity: 1;
-        margin: 0;
+        margin: 20px;
     }
   }
 
@@ -204,7 +204,6 @@ nav.nav {
   }
 
 
-
   &__input {
     width: 280px;
     height: 40px;
@@ -213,12 +212,14 @@ nav.nav {
     border: 1px solid $accentColor;
     border-radius: 4px;
     outline: none;
-     @media screen and (min-width: 769px) {
+
+      @media screen and (min-width: 769px) {
     @media screen and (max-width: $desk) {
-      opacity: 0;
-        margin: 0;
+    width: 190px;
+    height: 35px;
     }
   }
+    
 
     body.dark & {
       color: $textColorWhite;
@@ -229,16 +230,8 @@ nav.nav {
     font-weight: 400;
     font-size: 14px;
     line-height: 1.71;
-    color: #5f6775;
+    color: #5F6775;
     opacity: 0.4;
-  }
-}
-
-.search-form.visible {
-  @media screen and (min-width: 481px) {
-    @media screen and (max-width: $desk) {
-      opacity: 1;
-    }
   }
 }
 
@@ -309,6 +302,7 @@ nav.nav {
 
 .nav__sublist {
    outline: 1px solid #fd5103;
+   background-color: inherit;
     @include position(absolute);
     @include size(1px);
     top: 100%;
