@@ -14,6 +14,7 @@ export function openModalCocktail() {
   btnModalClose.addEventListener('click', closeModalCocktail);
   backdrop.addEventListener('click', onBackDropClick);
   window.addEventListener('keydown', onEscClick);
+  document.body.classList.add('no-scroll');
 }
 
 export function closeModalCocktail() {
@@ -21,6 +22,7 @@ export function closeModalCocktail() {
   btnModalClose.removeEventListener('click', closeModalCocktail);
   backdrop.removeEventListener('click', onBackDropClick);
   window.removeEventListener('keydown', onEscClick);
+  document.body.classList.remove('no-scroll');
 }
 
 function onBackDropClick(e) {
@@ -36,6 +38,7 @@ function onEscClick(e) {
 }
 
 export function renderModalCocktail(cocktail) {
+  console.log(cocktail);
   const entries = Object.entries(cocktail);
   const ingridients = [];
   entries.map(elem => {

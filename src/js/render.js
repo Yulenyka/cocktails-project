@@ -7,6 +7,7 @@ export default class Render {
     this.newsApi = new ApiService();
     this.cards = [];
     this.cocktailsListRef = document.querySelector('.cocktails-list');
+    this.modalCocktail = document.querySelector('.modal-cocktail');
   }
   // Функція яка рендерить розмітку по певному заданому символу
   async sectionSelectionFoRender(letter) {
@@ -41,7 +42,7 @@ export default class Render {
                 <h3 class="cocktails__name">"${strDrink}"</h3>
                 <ul class="button-list">
                     <li class="button__item">
-                        <button class="button-more" type="button">Learn more
+                        <button class="button-more" type="button" data-id="${idDrink}" data-action="more">Learn more
                         </button>
                     </li>
                     <li class="button__item">
