@@ -45,7 +45,7 @@ export function renderModalCocktail(cocktail) {
       ingridient =>
         `<li class="ingredients__item">
       <a href="" class="ingredients__link">
-        ${ingridient}
+        &#10038 ${ingridient}
       </a>
     </li>`
     )
@@ -53,21 +53,22 @@ export function renderModalCocktail(cocktail) {
 
   const { strDrink, strDrinkThumb, idDrink, strInstructions } = cocktail;
   const markup = `<div class="cocktails-info">
-              <img class="cocktails-info" src="${strDrinkThumb}" alt="#" width="320" height="320">
-              <h2 class="cocktails-info__title">Negroni</h2>
+              <h2 class="modal__title">${strDrink}</h2>
+              <div class="instruction">
+              <h3 class="instractions__title">Instructions:</h3>
+              <p class="instractions__text">${strInstructions}</p>
+              </div>
+              <img class="photo" src="${strDrinkThumb}" alt="#">
+              
               <div class="ingredients">
                   <h3 class="ingredients__title">Ingredients</h3>
-                  <p class="ingredients__text">Per cocktail</p>
+                  <p class="ingredients__subtitle">Per cocktail</p>
                   <ul class="ingredients__list">
                     ${ingidientsMarkup}  
                   </ul>
               </div>
           </div>
-          <div class="instruction">
-              <h3 class="instruction__title">Instructions:</h3>
-              <p class="instruction__text">${strInstructions}</p>
-          </div>
-          <button class='button-remove' type="button" data-id="${idDrink}"></button>
+          <button class='btn-remove' type="button" data-id="${idDrink}">Remove from favorite</button>
                 `;
 
   modalCocktail.innerHTML = markup;
@@ -75,7 +76,7 @@ export function renderModalCocktail(cocktail) {
 }
 
 function updateButton() {
-  const btnModalCocktail = document.querySelector('.button-remove');
+  const btnModalCocktail = document.querySelector('.btn-remove');
   console.log(render.cards);
   btnModalCocktail.addEventListener('click', e => {
     console.log(e.target.dataset.id);
