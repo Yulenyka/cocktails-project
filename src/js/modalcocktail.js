@@ -45,7 +45,7 @@ export function renderModalCocktail(cocktail) {
       ingridient =>
         `<li class="ingredients__item">
       <a href="" class="ingredients__link">
-        <span class="ingredients__star">&#10038</span> ${ingridient}
+        &#10038 ${ingridient}
       </a>
     </li>`
     )
