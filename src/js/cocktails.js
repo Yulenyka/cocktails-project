@@ -2,7 +2,7 @@ import Render from './render';
 
 const render = new Render();
 const cocktailsListRef = document.querySelector('.cocktails-list');
-cocktailsListRef.addEventListener('click', onClickBtn);
+if (cocktailsListRef) cocktailsListRef.addEventListener('click', onClickBtn);
 
 render.markUpRandomCocktails();
 function onClickBtn(e) {
