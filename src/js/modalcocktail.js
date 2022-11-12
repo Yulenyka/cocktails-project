@@ -8,6 +8,7 @@ const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
 
 let apiService = new ApiService();
+// let render = new Render();
 
 export function openModalCocktail() {
   backdrop.classList.remove('is-hidden');
@@ -119,11 +120,11 @@ async function addToFavorite(id) {
   });
 
   if (!cocktail) {
-    cocktail = render.cards.find(elem => elem.idDrink === id);
-    if (!cocktail) {
-      const response = await apiService.getCocktailById(id);
-      cocktail = response[0];
-    }
+    // cocktail = render.cards.find(elem => elem.idDrink === id);
+    // if (!cocktail) {
+    const response = await apiService.getCocktailById(id);
+    cocktail = response[0];
+    // }
     favorite.push(cocktail);
   } else {
     favorite = favorite.filter(elem => elem.idDrink !== id);
