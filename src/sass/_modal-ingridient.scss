@@ -37,8 +37,7 @@
   padding-bottom: 40px;
   padding-left: 20px;
   padding-right: 20px;
-  max-width: 90%;
-  max-height: 80vh;
+  max-width: 85%;
   overflow-y: auto;
   background-color: $textColorWhite;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -47,7 +46,7 @@
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
   @media screen and (min-width: $tab) {
     width: 720px;
-    height: 550px;
+    height: 520px;
     padding-bottom: 28px;
     padding-left: 28px;
     padding-right: 28px;
@@ -124,6 +123,7 @@
   }
 }
 .ingredient__description {
+  margin-bottom: 32px;
   font-family: $fPoppins;
   font-weight: 400;
   font-size: 16px;
@@ -133,15 +133,6 @@
   overflow-y: auto;
   @media screen and (min-width: $tab) {
   }
-}
-.ingredient__list {
-  margin-bottom: 32px;
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.62;
-  color: $textColorGray;
 }
 
 .btn-remove {
@@ -171,6 +162,6 @@
   @media screen and (min-width: $tab) {
     display: flex;
     margin-left: auto;
-    margin-top: 40px;
+    margin-right: 28px;
   }
 }
