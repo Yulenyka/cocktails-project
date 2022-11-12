@@ -89,7 +89,7 @@ export default class Render {
       .map(({ strDrink, strDrinkThumb, idDrink }) => {
         const cardFavorite = favorite.find(elem => elem.idDrink === idDrink);
         return `<li class="cocktails__item">
-                <img src="${strDrinkThumb}" alt="photo">
+                <img src="${strDrinkThumb}" alt="photo" />
                 <h3 class="cocktails__name">"${strDrink}"</h3>
                 <ul class="button-list">
                     <li class="button__item">
@@ -134,9 +134,11 @@ export default class Render {
   }
 
   createMarkUpMissingCocktails() {
+
     // Функція створення рядку розмитки, коли по заданому символу
     let markUp = `<h2 class="cocktails-title--refusal">Sorry, we didn't find any cocktail for you</h2>
         <div class="cocktails-frame"></div>`;
+
     this.wrapper.insertAdjacentHTML('afterbegin', markUp);
   }
 
