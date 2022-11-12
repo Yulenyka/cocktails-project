@@ -66,12 +66,12 @@ export function renderModalCocktail(cocktail) {
               <p class="instractions__text">${strInstructions}</p>
               </div>
               <img class="photo" src="${strDrinkThumb}" alt="#">
-              
+
               <div class="ingredients">
                   <h3 class="ingredients__title">Ingredients</h3>
                   <p class="ingredients__subtitle">Per cocktail</p>
                   <ul class="ingredients__list">
-                    ${ingidientsMarkup}  
+                    ${ingidientsMarkup}
                   </ul>
               </div>
           </div>

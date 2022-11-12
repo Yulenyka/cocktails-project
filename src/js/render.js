@@ -32,8 +32,6 @@ export default class Render {
   // Функція, яка створює строку розмітки галереї і додає її до DOM
   createMarkUpCocktails() {
     const favorite = this.getFavorite();
-    console.log('favorite :>> ', favorite);
-    console.log('this.cards :>> ', this.cards);
     let markUp = this.cards
       .map(({ strDrink, strDrinkThumb, idDrink }) => {
         const cardFavorite = favorite.find(elem => elem.idDrink === idDrink);
