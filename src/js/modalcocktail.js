@@ -1,7 +1,7 @@
 import Render, { FAVORITE_KEY } from './render';
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 import ApiService from './apiservice';
-import { render } from './cocktails';
+import './cocktails';
 
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
@@ -62,17 +62,20 @@ export function renderModalCocktail(cocktail) {
 
   const markup = `<div class="cocktails-info">
               <h2 class="modal__title">${strDrink}</h2>
-              <div class="instruction">
-              <h3 class="instractions__title">Instructions:</h3>
-              <p class="instractions__text">${strInstructions}</p>
+              <div class="modal__wrap">
+                <div class="instruction">
+                <h3 class="instractions__title">Instructions:</h3>
+                <p class="instractions__text">${strInstructions}</p>
+                </div>
+                <img class="photo" src="${strDrinkThumb}" alt="#">
               </div>
-              <img class="photo" src="${strDrinkThumb}" alt="#">
               
+
               <div class="ingredients">
                   <h3 class="ingredients__title">Ingredients</h3>
                   <p class="ingredients__subtitle">Per cocktail</p>
                   <ul class="ingredients__list">
-                    ${ingidientsMarkup}  
+                    ${ingidientsMarkup}
                   </ul>
               </div>
           </div>
