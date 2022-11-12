@@ -129,6 +129,17 @@
     margin-bottom: 40px;
   }
 }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: $textColorWhite;
+}
+::-webkit-scrollbar-thumb {
+  background: $accentColor;
+  border-radius: 4px;
+}
+
 .photo {
   margin-bottom: 22px;
   width: 100%;

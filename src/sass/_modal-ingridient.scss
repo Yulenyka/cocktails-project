@@ -47,9 +47,7 @@
   @media screen and (min-width: $tab) {
     width: 720px;
     height: 520px;
-    padding-bottom: 28px;
-    padding-left: 28px;
-    padding-right: 28px;
+    padding: 0;
   }
 }
 .modal-close {
@@ -83,6 +81,7 @@
   color: $texttColorBlackModal;
   @media screen and (min-width: $tab) {
     margin-bottom: 28px;
+    padding-left: 28px;
   }
 }
 
@@ -97,11 +96,12 @@
 
   @media screen and (min-width: $tab) {
     margin-bottom: 40px;
+    padding-left: 28px;
   }
 }
 .line {
   @media screen and (min-width: $tab) {
-    width: 720px;
+    width: 100%;
     margin-bottom: 28px;
     border-bottom: 1px solid;
     border-color: $accentColor;
@@ -119,9 +119,9 @@
   }
   @media screen and (min-width: $tab) {
     padding-left: 28px;
-    padding-right: 28px;
   }
 }
+
 .ingredient__description {
   margin-bottom: 32px;
   font-family: $fPoppins;
@@ -129,9 +129,10 @@
   font-size: 16px;
   line-height: 1.75;
   color: $textColorGray;
-  max-height: 300px;
+  height: 300px;
   overflow-y: auto;
   @media screen and (min-width: $tab) {
+    height: 150px;
   }
 }
 
