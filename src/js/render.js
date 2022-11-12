@@ -39,6 +39,11 @@ export default class Render {
     return window.currentArrays.cards;
   }
 
+  // set cards(a) {
+  //   console.log(a);
+  //   window.currentArrays.cards = a.slice();
+  // }
+
   paginationOnOff() {
     // Функція відображення пагінації
     if (window.currentArrays.cards.length === 0) return; //нічого рендерити
@@ -52,7 +57,7 @@ export default class Render {
       this.paginationBlock.classList.remove('is-none');
     }
     // console.log(window.currentArrays.cards);
-    // this.markupRender();
+    this.markupRender();
     const indexBegin = 0;
     const indexEnd = this.cocktailsPerPage();
     window.currentArrays.cardForRender = window.currentArrays.cards.slice(
@@ -134,7 +139,6 @@ export default class Render {
   }
 
   createMarkUpMissingCocktails() {
-
     // Функція створення рядку розмитки, коли по заданому символу
     let markUp = `<h2 class="cocktails-title--refusal">Sorry, we didn't find any cocktail for you</h2>
         <div class="cocktails-frame"></div>`;
