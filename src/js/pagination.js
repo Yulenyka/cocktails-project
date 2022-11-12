@@ -1,25 +1,11 @@
-import ApiService from './apiservice';
-import Pagination from 'tui-pagination'; 
+import Render from './render';
+const render = new Render();
 
-let apiService = new ApiService();
-console.log(apiService);
+paginationBlock = document.querySelector('.pagination-box');
 
-   var pagination2 = new Pagination(
-     document.getElementById('pagination'),
-     {
-       totalItems: 500,
-       itemsPerPage: 10,
-       visiblePages: 5,
-       centerAlign: true,
-     }
-   );
-    
-
-// const container = document.querySelector('#pagination1');
-// console.log(container);
-
-// const pagination1 = new Pagination('pagination1', {
-//   totalItems: 200,
-//   itemsPerPage: 5,
-//   visiblePages: 5,
-// });
+paginationBlock.addEventListener('click', event => {
+  window.currentArrays.currentPage = Number(event.target.textContent);
+  //   console.log(window.currentArrays);
+  console.log(render.cards);
+  return;
+});
