@@ -24,7 +24,6 @@ const removeFromFavorite = e => {
   localStorage.setItem(FAVORITE_KEY, JSON.stringify(favoriteIngridients));
   showIngridients(galleryIngridients);
 };
-showIngridients(galleryIngridients);
 
 export function showIngridients(galleryIngridients) {
   let favoriteIngridients = JSON.parse(localStorage.getItem(FAVORITE_KEY));
