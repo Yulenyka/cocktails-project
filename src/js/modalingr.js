@@ -5,7 +5,7 @@ import ApiService from './apiservice';
 const modalIngridient = document.querySelector('.modal-ingredient');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
 const btnModalClose = document.querySelector('#ingridient-close');
-
+const FAVORITE_KEY = 'favoriteIngredient';
 // let render = new Render();
 let apiService = new ApiService();
 
@@ -78,18 +78,16 @@ async function addToFavorite(id) {
 
   let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
   let ingredient = favorite.find(elem => elem.idIngredient === id);
-  let btnPageInredients = [];
-  btnArr.forEach(elem => {
-    elem.dataset.id === id && btnPageInredients.push(elem);
-  });
+  // let btnPageInredients = [];
+  // btnArr.forEach(elem => {
+  //   elem.dataset.id === id && btnPageInredients.push(elem);
+  // });
 
   if (!ingredient) {
-    // ingredient = render.cards.find(elem => elem.idDrink === id);
-    // if (!ingredient) {
     const response = await apiService.getCocktailIngrId(id);
     console.log(response);
     ingredient = response[0];
-    // }
+
     favorite.push(ingredient);
   } else {
     favorite = favorite.filter(elem => elem.idDrink !== id);
