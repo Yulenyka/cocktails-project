@@ -46,7 +46,7 @@ export async function renderModalIngridient(ingridientName) {
   } = response[0];
 
   let markup = `<h2 class="ingredient__title">${strIngredient}</h2>
-<h3 class="ingredient__subtitle">${strType ? strType : ''}</h3>
+<h3 class="ingredient__subtitle">${strType ? strType : 'No information'}</h3>
 <div class="line"></div>
 <p class="ingredient__text">${
     strAlcohol === 'Yes'

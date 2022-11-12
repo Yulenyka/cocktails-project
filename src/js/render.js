@@ -93,7 +93,7 @@ export default class Render {
       .map(({ strDrink, strDrinkThumb, idDrink }) => {
         const cardFavorite = favorite.find(elem => elem.idDrink === idDrink);
         return `<li class="cocktails__item">
-                <img src="${strDrinkThumb}" alt="photo" />
+                <img src="${strDrinkThumb}" alt="Cocktails photo" />
                 <h3 class="cocktails__name">"${strDrink}"</h3>
                 <ul class="button-list">
                     <li class="button__item">
