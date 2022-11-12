@@ -63,6 +63,10 @@
         font-size: 18px;
         line-height: 1.56;
     }
+
+    body.dark & {
+      color: $bgColor;
+    }
 }
 
 .hero__navigation {
