@@ -46,8 +46,8 @@ export function showAllCoctails(gallery) {
       elem.addEventListener('click', removeFromFavorite);
     });
   } else {
-    const markupCocktails = `<li>
-    <p class="no__favorite-cocktails">
+    const markupCocktails = `<li class="favorite-ingridient__box">
+    <p class="favorite-ingridient__text">
       You haven't added any <br />
       favorite cocktails yet
     </p>

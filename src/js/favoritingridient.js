@@ -1,4 +1,7 @@
+import { openModalIngridient, renderModalIngridient } from './modalingr';
+
 // import ApiService from './apiservice';
+
 const galleryIngridients = document.querySelector('.favorite-ingridient__list');
 // const galleryIngridientsTitle = document.querySelector(
 //   '.favorite-ingridient__title'
@@ -34,7 +37,7 @@ export function showIngridients(galleryIngridients) {
       <p class="drink__type">Alcohol: ${text}</p>
       <ul class="button-list">
         <li class="button__item">
-          <button class="button-more" type="submit">Learn more</button>
+          <button class="button-more" type="submit" data-id="${idIngredient}">Learn more</button>
         </li>
         <li class="button__item">
           <button class='button-remove' type="button" data-id="${idIngredient}" data-action="ingredient">Remove</button>
@@ -44,13 +47,26 @@ export function showIngridients(galleryIngridients) {
       })
       .join('');
     galleryIngridients.innerHTML = markupIngridients;
+    const buttonMore = document.querySelectorAll('.button-more');
+    buttonMore.forEach(elem => {
+      elem.addEventListener('click', e => {
+        let ingredient = favoriteIngridients.find(
+          elem => elem.idIngredient === e.target.dataset.id
+        );
+        console.log(ingredient);
+        renderModalIngridient(
+          ingredient.strIngredient.toLowerCase().split(' ').join('+')
+        );
+        openModalIngridient();
+      });
+    });
     const buttonRemove = document.querySelectorAll('.button-remove');
     buttonRemove.forEach(elem => {
       console.log(elem);
       elem.addEventListener('click', removeFromFavorite);
     });
   } else {
-    const markupIngridients = `<li><p class="no__favorite-cocktails">
+    const markupIngridients = `<li class="favorite-ingridient__box"><p class="favorite-ingridient__text">
       You haven't added any <br />
       favorite ingridients yet
     </p></li>`;

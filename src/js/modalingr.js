@@ -1,5 +1,6 @@
 import Render from './render';
 import ApiService from './apiservice';
+// import { showIngridients } from './favoritingridient';
 
 const modalIngridient = document.querySelector('.modal-ingredient');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
@@ -49,12 +50,15 @@ export async function renderModalIngridient(ingridientName) {
   let findIngredient = favorite.find(
     elem => elem.idIngredient === idIngredient
   );
+  let vol = strABV
+    ? `<br /> <span class="ingredient__text--accent">Alcohol by volume:</span> ${strABV}%`
+    : '';
   let markup = `<h2 class="ingredient__title">${strIngredient}</h2>
 <h3 class="ingredient__subtitle">${strType ? strType : ''}</h3>
 <div class="line"></div>
 <p class="ingredient__text">${
     strAlcohol === 'Yes'
-      ? `<span class="ingredient__text--accent">Alcohol by volume:</span> ${strABV}%`
+      ? `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}${vol}`
       : `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}`
   }</p>
 <p class="ingredient__description">${
