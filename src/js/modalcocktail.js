@@ -1,12 +1,11 @@
 import Render, { FAVORITE_KEY } from './render';
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 import ApiService from './apiservice';
-// import { render } from './cocktails';
-
+// import { showAllCoctails } from './favoritecocktails';
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
-
+// import { render } from './cocktails';
 let apiService = new ApiService();
 let render = new Render();
 
@@ -79,7 +78,7 @@ export function renderModalCocktail(cocktail) {
                   </ul>
               </div>
           </div>
-           <button class="btn-remove ${
+           <button id='favcocktail' class="btn-remove ${
              findCocktail ? 'button-remove' : 'button-add'
            }" type="button" data-id="${idDrink}">${
     findCocktail ? 'Remove from favorite' : 'Add to favorite'
@@ -105,14 +104,14 @@ export function renderModalCocktail(cocktail) {
 }
 
 function updateButton() {
-  const btnModalCocktail = document.querySelector('.btn-remove');
+  const btnModalCocktail = document.querySelector('#favcocktail');
   btnModalCocktail.addEventListener('click', e => {
     addToFavorite(e.target.dataset.id);
   });
 }
 
 async function addToFavorite(id) {
-  const btnAddRemove = document.querySelector('.btn-remove');
+  const btnAddRemove = document.querySelector('#favcocktail');
   const btnArr = document.querySelectorAll('[data-action="favorite"]') || [];
 
   let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
