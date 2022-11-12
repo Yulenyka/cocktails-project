@@ -21,8 +21,7 @@ async function searchCoctail(e) {
         render.renderNotFound();
         return;
       }
-      // console.log('i am heare');
-      window.currentArrays.cards = r.slice();
+      render.cards = r.slice();
       render.resetMarkUp();
       render.createMarkUpCocktails();
     });
