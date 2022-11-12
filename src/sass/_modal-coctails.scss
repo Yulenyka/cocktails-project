@@ -12,9 +12,6 @@
   opacity: 1;
   transition: opacity 500ms linear;
   transform: opacity(1);
-  @media screen and (min-width: $tab) {
-    min-height: 600px;
-  }
 }
 
 .backdrop.is-hidden {
@@ -52,8 +49,10 @@
 
   @media screen and (min-width: $tab) {
     width: 820px;
-    height: 550px;
-    padding: 0;
+    padding-top: 0px;
+    padding-bottom: 28px;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 }
 .modal-close {
@@ -72,6 +71,10 @@
   }
   &__icon {
     fill: currentColor;
+  }
+  @media screen and (min-width: $tab) {
+    right: 12px;
+    top: 12px;
   }
 }
 .modal__title {
@@ -95,7 +98,13 @@
     flex-direction: column-reverse;
   }
 }
-.instractions__title {
+
+.instruction {
+  @media screen and (min-width: $tab) {
+    padding-left: 28px;
+  }
+}
+.instruction__title {
   margin-bottom: 20px;
   font-family: $fPoppins;
   font-weight: 600;
@@ -104,21 +113,20 @@
   text-transform: uppercase;
   color: $texttColorBlackModal;
   @media screen and (min-width: $tab) {
-    // position: absolute;
-    // top: 348px;
-    // left: 28;
+    margin-bottom: 24px;
   }
 }
-.instractions__text {
+.instruction__text {
   margin-bottom: 32px;
   font-family: $fPoppins;
   font-size: 16px;
   line-height: 1.75;
   color: $textColorGray;
-  max-height: 60px;
+  max-height: 100px;
   overflow-y: auto;
   @media screen and (min-width: $tab) {
     width: 615px;
+    margin-bottom: 40px;
   }
 }
 .photo {
@@ -130,9 +138,11 @@
   }
 }
 .ingredients {
-  position: absolute;
-  top: 105px;
-  left: 320px;
+  @media screen and (min-width: $tab) {
+    position: absolute;
+    top: 105px;
+    left: 320px;
+  }
 }
 .ingredients__title {
   margin-bottom: 8px;
@@ -143,9 +153,6 @@
   text-transform: uppercase;
   color: $texttColorBlackModal;
   @media screen and (min-width: $tab) {
-    // position: absolute;
-    // top: 105px;
-    // left: 320px;
   }
 }
 .ingredients__subtitle {
@@ -156,9 +163,6 @@
   line-height: 1.5;
   color: $texttColorBlackModal;
   @media screen and (min-width: $tab) {
-    // position: absolute;
-    // top: 137px;
-    // left: 320px;
   }
 }
 .ingredients__list {
@@ -171,12 +175,8 @@
   color: $textColorGray;
 
   @media screen and (min-width: $tab) {
-    // position: absolute;
-    // top: 166px;
-    // left: 320px;
+    margin-bottom: 0px;
   }
-}
-.ingredients__item {
 }
 .ingredients__link {
   font-family: 'Poppins';
@@ -220,17 +220,5 @@
     color: $textColorWhite;
   }
   @media screen and (min-width: $tab) {
-    bottom: 28px;
-    right: 28px;
-    min-width: 160px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    font-size: 20px;
-    line-height: 1.2;
-  }
-  @media screen and (min-width: $desk) {
-    min-width: 182px;
-    padding-left: 24px;
-    padding-right: 24px;
   }
 }
