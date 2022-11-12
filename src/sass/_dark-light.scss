@@ -109,3 +109,52 @@
 .no-scroll {
   overflow: hidden;
 }
+
+.favorite-cocktails__title {
+    body.dark & {
+    color: $bgColor;
+  }
+}
+
+.no__favorite-cocktails {
+      body.dark & {
+    color: $bgColor;
+  }
+}
+
+.cocktails__name {
+      body.dark & {
+    color: $bgColor;
+  }
+}
+
+.backdrop {
+      body.dark & {
+     background-color: #bab1b899;
+  }
+}
+
+.modal {
+      body.dark & {
+    color: $bgColor;
+     background-color: $textColorBlack;
+  }
+}
+
+.modal__title {
+      body.dark & {
+    color: $bgColor;
+  }
+}
+
+.ingredients__title {
+      body.dark & {
+    color: $bgColor;
+  }
+}
+
+.ingredients__subtitle {
+      body.dark & {
+    color: #BDBDBD;
+  }
+}

@@ -607,6 +607,39 @@ body.dark .ligth {
   overflow: hidden;
 }
 
+body.dark .favorite-cocktails__title {
+  color: #fcfcfc;
+}
+
+body.dark .no__favorite-cocktails {
+  color: #fcfcfc;
+}
+
+body.dark .cocktails__name {
+  color: #fcfcfc;
+}
+
+body.dark .backdrop {
+  background-color: rgba(186, 177, 184, 0.6);
+}
+
+body.dark .modal {
+  color: #fcfcfc;
+  background-color: #202025;
+}
+
+body.dark .modal__title {
+  color: #fcfcfc;
+}
+
+body.dark .ingredients__title {
+  color: #fcfcfc;
+}
+
+body.dark .ingredients__subtitle {
+  color: #BDBDBD;
+}
+
 .burger {
   width: 32px;
   height: 32px;
