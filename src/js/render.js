@@ -39,10 +39,9 @@ export default class Render {
     return window.currentArrays.cards;
   }
 
-  // set cards(a) {
-  //   console.log(a);
-  //   window.currentArrays.cards = a.slice();
-  // }
+  set cards(a) {
+    window.currentArrays.cards = a.slice();
+  }
 
   paginationOnOff() {
     // Функція відображення пагінації
