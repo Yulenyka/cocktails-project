@@ -1,7 +1,7 @@
 import Render, { FAVORITE_KEY } from './render';
 import ApiService from './apiservice';
 
-const modalIngridient = document.querySelector('.modal-content');
+const modalIngridient = document.querySelector('.modal-ingredient');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
 const btnModalClose = document.querySelector('#ingridient-close');
 
@@ -45,14 +45,15 @@ export async function renderModalIngridient(ingridientName) {
     strABV,
   } = response[0];
 
-  let markup = `<h2>${strIngredient}</h2>
-<p>${strType ? strType : ''}</p>
-<p>${
+  let markup = `<h2 class="ingredient__title">${strIngredient}</h2>
+<h3 class="ingredient__subtitle">${strType ? strType : ''}</h3>
+<div class="line"></div>
+<p class="ingredient__text">${
     strAlcohol === 'Yes'
-      ? `Alcohol by volume: ${strABV}%`
-      : `Alcohol: ${strAlcohol}`
+      ? `<span class="ingredient__text--accent">Alcohol by volume:</span> ${strABV}%`
+      : `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}`
   }</p>
-<p>${
+<p class="ingredient__description">${
     strDescription
       ? strDescription
       : `Sorry, we have no information about ${strIngredient}.`
