@@ -1,14 +1,14 @@
 import Render, { FAVORITE_KEY } from './render';
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 import ApiService from './apiservice';
-import './cocktails';
+// import { render } from './cocktails';
 
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
 
 let apiService = new ApiService();
-// let render = new Render();
+let render = new Render();
 
 export function openModalCocktail() {
   backdrop.classList.remove('is-hidden');
