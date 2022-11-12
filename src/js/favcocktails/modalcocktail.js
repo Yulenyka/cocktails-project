@@ -1,12 +1,10 @@
-import { FAVORITE_KEY } from './render';
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 import ApiService from './apiservice';
-import { render } from './cocktails';
 
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
-
+const FAVORITE_KEY = 'favorite';
 let apiService = new ApiService();
 // let render = new Render();
 
@@ -123,10 +121,10 @@ async function addToFavorite(id) {
   });
 
   if (!cocktail) {
-    cocktail = render.cards.find(elem => elem.idDrink === id);
+    // cocktail = render.cards.find(elem => elem.idDrink === id);
     // if (!cocktail) {
-    // const response = await apiService.getCocktailById(id);
-    // cocktail = response[0];
+    const response = await apiService.getCocktailById(id);
+    cocktail = response[0];
     // }
     favorite.push(cocktail);
   } else {

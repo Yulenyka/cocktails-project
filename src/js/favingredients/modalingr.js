@@ -1,6 +1,6 @@
 // import Render, { FAVORITE_KEY } from './render';
 import ApiService from './apiservice';
-// import { FAVORITE_KEY } from './favoritingridient';
+import { FAVORITE_KEY } from './favoritingridient';
 
 const modalIngridient = document.querySelector('.modal-ingredient');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
@@ -45,14 +45,14 @@ export async function renderModalIngridient(ingridientName) {
     strAlcohol,
     strABV,
   } = response[0];
-  let vol = strABV ? `${strABV}%` : '';
+
   let markup = `<h2 class="ingredient__title">${strIngredient}</h2>
 <h3 class="ingredient__subtitle">${strType ? strType : ''}</h3>
 <div class="line"></div>
 <p class="ingredient__text">${
     strAlcohol === 'Yes'
-      ? `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}. ${vol}`
-      : `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}.`
+      ? `<span class="ingredient__text--accent">Alcohol by volume:</span> ${strABV}%`
+      : `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}`
   }</p>
 <p class="ingredient__description">${
     strDescription
@@ -84,8 +84,8 @@ async function addToFavorite(id) {
   });
 
   if (!ingredient) {
-    // ingredient = render.cards.find(elem => elem.idDrink === id);
-    // if (!ingredient) {
+    // cocktail = render.cards.find(elem => elem.idDrink === id);
+    // if (!cocktail) {
     const response = await apiService.getCocktailIngrId(id);
     console.log(response);
     ingredient = response[0];

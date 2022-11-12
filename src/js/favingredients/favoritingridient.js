@@ -4,7 +4,7 @@ const galleryIngridients = document.querySelector('.favorite-ingridient__list');
 //   '.favorite-ingridient__title'
 // );
 let apiService = new ApiService();
-const FAVORITE_KEY = 'favoriteIngridient';
+export const FAVORITE_KEY = 'favoriteIngridient';
 
 apiService.getCocktailIngrId(25).then(resp => {
   // возвращает ингридиет по id.

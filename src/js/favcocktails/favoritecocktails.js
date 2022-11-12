@@ -1,7 +1,9 @@
 // import ApiService from './apiservice';
-import { FAVORITE_KEY } from './render';
+// import { FAVORITE_KEY } from './render';
 import { openModalCocktail, renderModalCocktail } from './modalcocktail';
+
 const gallery = document.querySelector('.favorite-cocktails__list');
+const FAVORITE_KEY = 'favorite';
 
 export function showAllCoctails(gallery) {
   let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
