@@ -1,7 +1,7 @@
 import Render, { FAVORITE_KEY } from './render';
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 import ApiService from './apiservice';
-import { render } from './cocktails';
+import './cocktails';
 
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
