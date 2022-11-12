@@ -2,8 +2,9 @@ import Render from './render';
 import { renderModalCocktail } from './modalcocktail';
 import { openModalCocktail } from './modalcocktail';
 import { renderModalCocktail } from './modalcocktail';
-
-export const render = new Render();
+const modalCocktail = document.querySelector('.modal-cocktail');
+const render = new Render();
+// console.log(render);
 const cocktailsListRef = document.querySelector('.cocktails-list');
 if (cocktailsListRef) cocktailsListRef.addEventListener('click', onClickBtn);
 
@@ -16,7 +17,6 @@ function onClickBtn(e) {
     render.changeFavoriteBtn(e.target);
   } else if (e.target.dataset.action === 'more') {
     const idMore = e.target.dataset.id;
-    console.log(idMore);
     const cocktail = render.cards.find(item => item.idDrink === idMore);
     openModalCocktail();
     renderModalCocktail(cocktail);
