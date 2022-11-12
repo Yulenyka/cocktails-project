@@ -1,19 +1,7 @@
 // import ApiService from './apiservice';
-import Render, { FAVORITE_KEY } from './render';
+import { FAVORITE_KEY } from './render';
 import { openModalCocktail, renderModalCocktail } from './modalcocktail';
-const gallery = document.querySelector('.gallery');
-const galleryCocktailsTitle = document.querySelector(
-  '.favorite-cocktails__title'
-);
-const messageCocktails = document.querySelector('.message-cocktails');
-// const buttonMore = document.querySelector('.button-more');
-// let apiService = new ApiService();
-// let render = new Render();
-
-// apiService.getCocktailRandom(3).then(data => {
-//   localStorage.setItem(FAVORITE_KEY, JSON.stringify(data));
-//   showAllCoctails(gallery); // удалить до пуша
-// });
+const gallery = document.querySelector('.favorite-cocktails__list');
 
 export function showAllCoctails(gallery) {
   let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
@@ -24,7 +12,7 @@ export function showAllCoctails(gallery) {
       .map(({ strDrink, strDrinkThumb, idDrink }) => {
         // console.log(strIngredient);
         return `<li class="cocktails__item">
-                <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo">
+                <img class="cocktails__img" src="${strDrinkThumb}" alt="${strDrink} photo"/>
                 <h3 class="cocktails__name">${strDrink}</h3>
                 <ul class="button-list">
                     <li class="button__item">
@@ -35,8 +23,7 @@ export function showAllCoctails(gallery) {
                     <button class='button-remove' type="button" data-id="${idDrink}" data-action="favorite">Remove</button>
                   </li>
                 </ul>
-              </li>
-              `;
+              </li>`;
       })
       .join('');
     gallery.innerHTML = markupCocktails;

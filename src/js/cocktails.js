@@ -2,7 +2,8 @@ import Render from './render';
 import { renderModalCocktail } from './modalcocktail';
 import { openModalCocktail } from './modalcocktail';
 import { renderModalCocktail } from './modalcocktail';
-const render = new Render();
+
+export const render = new Render();
 const cocktailsListRef = document.querySelector('.cocktails-list');
 if (cocktailsListRef) cocktailsListRef.addEventListener('click', onClickBtn);
 
