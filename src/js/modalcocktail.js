@@ -63,8 +63,10 @@ export function renderModalCocktail(cocktail) {
               <h2 class="modal__title">${strDrink}</h2>
               <div class="modal__wrap">
                 <div class="instruction">
-                <h3 class="instractions__title">Instructions:</h3>
-                <p class="instractions__text">${strInstructions}</p>
+                <h3 class="
+instruction__title">Instructions:</h3>
+                <p class="
+instruction__text">${strInstructions}</p>
                 </div>
                 <img class="photo" src="${strDrinkThumb}" alt="#">
               </div>
