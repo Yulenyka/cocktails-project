@@ -26,6 +26,10 @@ async function searchCoctail(e) {
   } else {
     render.sectionSelectionFoRender(coctailName.toLowerCase());
   }
+  const refButtonActive = document.querySelector('.hero__btn-active');
+  if (refButtonActive) {
+    refButtonActive.classList.remove('hero__btn-active');
+  }
 }
 
 function clearInput() {
