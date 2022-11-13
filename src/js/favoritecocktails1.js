@@ -2,6 +2,8 @@
 import { FAVORITE_KEY } from './render';
 import { openModalCocktail, renderModalCocktail } from './modalcocktail';
 const gallery = document.querySelector('.favorite-cocktails__list');
+console.log(gallery);
+console.log('Hallo world');
 
 export function showAllCoctails(gallery) {
   let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
@@ -37,7 +39,9 @@ export function showAllCoctails(gallery) {
         );
         // console.log(cocktail);
         renderModalCocktail(cocktail);
-        openModalCocktail();
+        openModalCocktail(() => {
+          showAllCoctails(gallery);
+        });
       });
     });
     const buttonRemove = document.querySelectorAll('.button-remove');
@@ -62,6 +66,7 @@ const removeFromFavorite = e => {
     elem => elem.idDrink !== e.target.dataset.id
   );
   console.log(favoriteCocktails);
+
   localStorage.setItem(FAVORITE_KEY, JSON.stringify(favoriteCocktails));
   showAllCoctails(gallery);
 };
