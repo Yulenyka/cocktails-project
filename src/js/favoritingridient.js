@@ -1,20 +1,7 @@
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 
-// import ApiService from './apiservice';
-
 const galleryIngridients = document.querySelector('.favorite-ingridient__list');
-// const galleryIngridientsTitle = document.querySelector(
-//   '.favorite-ingridient__title'
-// );
-// let apiService = new ApiService();
 const FAVORITE_KEY = 'favoriteIngredient';
-
-// apiService.getCocktailIngrId(25).then(resp => {
-//   // возвращает ингридиет по id.
-//   // возвращает пустой массив, если ничего не найдено
-//   localStorage.setItem(FAVORITE_KEY, JSON.stringify(resp));
-//   console.log(resp);
-// });
 
 const removeFromFavorite = e => {
   let favoriteIngridients = JSON.parse(localStorage.getItem(FAVORITE_KEY));
@@ -56,7 +43,9 @@ export function showIngridients(galleryIngridients) {
         renderModalIngridient(
           ingredient.strIngredient.toLowerCase().split(' ').join('+')
         );
-        openModalIngridient();
+        openModalIngridient(() => {
+          showIngridients(galleryIngridients);
+        });
       });
     });
     const buttonRemove = document.querySelectorAll('.button-remove');
