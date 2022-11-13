@@ -4,7 +4,6 @@ import { openModalCocktail } from './modalcocktail';
 import { renderModalCocktail } from './modalcocktail';
 const modalCocktail = document.querySelector('.modal-cocktail');
 const render = new Render();
-// console.log(render);
 const cocktailsListRef = document.querySelector('.cocktails-list');
 if (cocktailsListRef) cocktailsListRef.addEventListener('click', onClickBtn);
 

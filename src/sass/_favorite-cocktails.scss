@@ -32,7 +32,13 @@
             line-height: 1.5;
         }
 }
-.no__favorite-cocktails {
+
+.favorite-ingridient__box {
+    display: block;
+    width: 100%;
+}
+
+.favorite-ingridient__text {
     font-weight: 400;
     font-size: 20px;
     line-height: 3;
@@ -50,12 +56,10 @@
 
 .gallery {   
         display: block;
-        justify-content: center;
         margin-bottom: 20px;
-    
-
     @media screen and (min-width: $tab) {
         display: flex;
+        justify-content: start;
         gap: 32px;
         flex-wrap: wrap;
         margin-bottom: 60px;
