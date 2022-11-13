@@ -4,8 +4,7 @@ let apiService = new ApiService();
 const render = new Render();
 
 const searchForm = document.querySelector('.search-form');
-const gallery = document.querySelector('.cocktails-list');
-console.log(gallery);
+// const gallery = document.querySelector('.cocktails-list');
 
 let coctailName = '';
 
@@ -17,12 +16,10 @@ async function searchCoctail(e) {
   if (coctailName) {
     apiService.getCocktailByName(coctailName).then(r => {
       if (r.length === 0) {
-        render.resetMarkUp();
         render.renderNotFound();
         return;
       }
-      render.cards = r;
-      render.resetMarkUp();
+      render.cards = r.slice();
       render.createMarkUpCocktails();
     });
   }

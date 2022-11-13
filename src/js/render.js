@@ -12,11 +12,11 @@ const COUNT_PICT_ON_TABLET = 6;
 const COUNT_PICT_ON_MOBILE = 3;
 
 // сделать информацию о текущем пользователе глобальной, для предоставления доступа всем скриптам
-window.currentArrays = {
+window.globalArrays = {
   cards: [], // загальний масив
   cardForRender: [], // поточні відображені картки
   currentPage: 1, //поточна сторінка
-  pages: 0, // загальна кількість сторінок
+  pages: 1, // загальна кількість сторінок
 };
 
 export default class Render {
@@ -26,70 +26,90 @@ export default class Render {
     this.cocktailsListRef = document.querySelector('.cocktails-list');
     this.modalCocktail = document.querySelector('.modal-cocktail');
     this.paginationBlock = document.querySelector('.pagination-box');
-    this.paginationList = document.querySelector('.pagination-render');
+    this.paginationList = document.querySelector('.pagination-list');
 
-    // this.cards = window.currentArrays.cards; // масив усіх отриманих коктейів
-    // this.cardForRender = []; // масив коктейлів для відображення на поточній сторінці
     this.paginationCurrentPage = 1; // текущая страница пагинации
     this.newsApi = new ApiService();
   }
 
   get cards() {
     // повертає глобальний масив картинок
-    return window.currentArrays.cards;
+    return window.globalArrays.cards;
   }
 
-  paginationOnOff() {
-    // Функція відображення пагінації
-    if (window.currentArrays.cards.length === 0) return; //нічого рендерити
+  set cards(a) {
+    window.globalArrays.cards = a.slice();
+  }
+  get cardForRender() {
+    return window.globalArrays.cardForRender;
+  }
 
-    // все влазить на сторінку, відключаємо відображення пагінації
-    if (window.currentArrays.cards.length <= this.cocktailsPerPage()) {
+  set cardForRender(a) {
+    window.globalArrays.cardForRender = a.slice();
+  }
+  get currentPage() {
+    return window.globalArrays.currentPage;
+  }
+
+  set currentPage(a) {
+    window.globalArrays.currentPage = a;
+  }
+
+  get pages() {
+    return window.globalArrays.pages;
+  }
+
+  set pages(a) {
+    window.globalArrays.pages = a;
+  }
+
+  paginationOnOf() {
+    // Функція відображення блоку пагінації
+    if (this.cards.length <= this.cocktailsPerPage()) {
+      // все влазить на сторінку, відключаємо відображення пагінації
       this.paginationBlock.classList.add('is-none');
-      window.currentArrays.cardForRender = window.currentArrays.cards.slice();
+      this.cardForRender = this.cards.slice();
       return;
-    } else {
-      this.paginationBlock.classList.remove('is-none');
     }
-    // console.log(window.currentArrays.cards);
-    // this.markupRender();
-    const indexBegin = 0;
-    const indexEnd = this.cocktailsPerPage();
-    window.currentArrays.cardForRender = window.currentArrays.cards.slice(
-      indexBegin,
-      indexEnd
-    );
+    this.paginationBlock.classList.remove('is-none');
+
+    // console.log(this.paginationList.children[this.currentPage - 1]);
+
+    // let refActiveButton = this.paginationList.children;
+    // console.log(refActiveButton);
+    // refActiveButton.classList.add('pagination-button--select');
+    this.createMarkupPagination();
   }
 
-  markupRender() {
-    // page сторінка для створення розмітки
-    // модифікує this.cardForRender
-
+  createMarkupPagination() {
+    // створює розмітку пагінації
     // розраховуемо кількість сторінок
-    window.currentArrays.pages = Math.ceil(
-      window.currentArrays.cards.length / this.cocktailsPerPage()
-    );
-    // console.log(window.currentArrays.pages);
+    this.pages = Math.ceil(this.cards.length / this.cocktailsPerPage());
     let markUpString = '';
-    for (let i = 1; i <= window.currentArrays.pages; i++) {
-      markUpString += `<li class="pagination-page">
+    for (let i = 1; i <= this.pages; i++) {
+      markUpString += `<li class="pagination-item">
       <button type="button" class="pagination-button">${i}</button>
     </li>`;
     }
     this.paginationList.innerHTML = markUpString;
   }
 
+  makeRenderArray() {
+    const indexBegin = (this.currentPage - 1) * this.cocktailsPerPage();
+    const indexEnd = indexBegin + this.cocktailsPerPage();
+    this.cardForRender = this.cards.slice(indexBegin, indexEnd);
+  }
+
   createMarkUpCocktails() {
     // Функція, яка створює строку розмітки галереї і додає її до DOM
     const favorite = this.getFavorite();
-    // console.log('favorite :>> ', favorite);
-    // console.log('this.cards :>> ', this.cards);
-    this.paginationOnOff();
-    let markUp = window.currentArrays.cardForRender
+    this.paginationOnOf();
+    this.makeRenderArray();
+    let markUp = this.cardForRender
       .map(({ strDrink, strDrinkThumb, idDrink }) => {
         const cardFavorite = favorite.find(elem => elem.idDrink === idDrink);
         return `<li class="cocktails__item">
-                <img src="${strDrinkThumb}" alt="photo" />
+                <img src="${strDrinkThumb}" alt="Cocktails photo" />
                 <h3 class="cocktails__name">"${strDrink}"</h3>
                 <ul class="button-list">
                     <li class="button__item">
@@ -108,22 +128,27 @@ export default class Render {
               </li>`;
       })
       .join('');
-    this.resetMarkUp();
-    if (this.gallery) this.gallery.insertAdjacentHTML('afterbegin', markUp);
+    // this.resetMarkUp();
+    if (this.gallery) this.gallery.innerHTML = markUp;
   }
 
   sectionSelectionFoRender(letter) {
     // Функція яка рендерить розмітку по певному заданому символу
-    this.newsApi.getCocktailByFirstLetter(letter).then(a => {
-      window.currentArrays.cards = a.slice();
-      if (window.currentArrays.cards.length === 0) {
-        this.renderNotFound();
-      } else {
-        document.querySelector('.missingcocktails').classList.add('is-none');
-        document.querySelector('.cocktails').classList.remove('is-none');
-        this.createMarkUpCocktails();
-      }
-    });
+    this.newsApi
+      .getCocktailByFirstLetter(letter)
+      .then(a => {
+        this.cards = a.slice();
+        if (this.cards.length === 0) {
+          this.renderNotFound();
+        } else {
+          document.querySelector('.missingcocktails').classList.add('is-none');
+          document.querySelector('.cocktails').classList.remove('is-none');
+          this.createMarkUpCocktails();
+        }
+      })
+      .catch(e => {
+        this.resetGlobalArray();
+      });
   }
 
   //  Функція яка рендерить розмітку при відсутності коктейлю
@@ -134,20 +159,26 @@ export default class Render {
   }
 
   createMarkUpMissingCocktails() {
-
     // Функція створення рядку розмитки, коли по заданому символу
     let markUp = `<h2 class="cocktails-title--refusal">Sorry, we didn't find any cocktail for you</h2>
         <div class="cocktails-frame"></div>`;
-
-    this.wrapper.insertAdjacentHTML('afterbegin', markUp);
+    this.resetGlobalArray();
+    this.paginationOnOf();
+    this.resetMarkUp();
+    this.wrapper.innerHTML = markUp;
   }
 
   markUpRandomCocktails() {
     // Функція відмальовки рандомних зображень при першому запуску
-    this.newsApi.getCocktailRandom(this.cocktailsPerPage()).then(a => {
-      window.currentArrays.cards = a.slice();
-      this.createMarkUpCocktails();
-    });
+    this.newsApi
+      .getCocktailRandom(this.cocktailsPerPage())
+      .then(a => {
+        this.cards = a.slice();
+        this.createMarkUpCocktails();
+      })
+      .catch(e => {
+        this.resetGlobalArray();
+      });
   }
 
   cocktailsPerPage() {
@@ -195,7 +226,7 @@ export default class Render {
   addToFavorite(id = '') {
     // Функція додавання, видалення з улюблених, робота з ЛокалСтор.
     let favorite = this.getFavorite();
-    const card = window.currentArrays.cards.find(elem => elem?.idDrink === id);
+    const card = this.cards.find(elem => elem?.idDrink === id);
     const inArray = favorite.some(elem => elem?.idDrink === id);
     if (!inArray) {
       favorite.push(card);
@@ -203,6 +234,13 @@ export default class Render {
       favorite = favorite.filter(elem => elem.idDrink !== id);
     }
     localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
+  }
+
+  resetGlobalArray() {
+    this.cards = [];
+    this.cardForRender = [];
+    this.pages = 1;
+    this.currentPage = 1;
   }
 
   resetMarkUp() {

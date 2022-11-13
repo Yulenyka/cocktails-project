@@ -1,5 +1,6 @@
-import Render, { FAVORITE_KEY } from './render';
+import Render from './render';
 import ApiService from './apiservice';
+// import { showIngridients } from './favoritingridient';
 
 const modalIngridient = document.querySelector('.modal-ingredient');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
@@ -7,6 +8,7 @@ const btnModalClose = document.querySelector('#ingridient-close');
 
 // let render = new Render();
 let apiService = new ApiService();
+const FAVORITE_KEY = 'favoriteIngredient';
 
 export function openModalIngridient() {
   backdropIngridient.classList.remove('is-hidden');
@@ -44,13 +46,19 @@ export async function renderModalIngridient(ingridientName) {
     strAlcohol,
     strABV,
   } = response[0];
-
+  let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
+  let findIngredient = favorite.find(
+    elem => elem.idIngredient === idIngredient
+  );
+  let vol = strABV
+    ? `<br /> <span class="ingredient__text--accent">Alcohol by volume:</span> ${strABV}%`
+    : '';
   let markup = `<h2 class="ingredient__title">${strIngredient}</h2>
-<h3 class="ingredient__subtitle">${strType ? strType : ''}</h3>
+<h3 class="ingredient__subtitle">${strType ? strType : 'No information'}</h3>
 <div class="line"></div>
 <p class="ingredient__text">${
     strAlcohol === 'Yes'
-      ? `<span class="ingredient__text--accent">Alcohol by volume:</span> ${strABV}%`
+      ? `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}${vol}`
       : `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}`
   }</p>
 <p class="ingredient__description">${
@@ -58,7 +66,57 @@ export async function renderModalIngridient(ingridientName) {
       ? strDescription
       : `Sorry, we have no information about ${strIngredient}.`
   }</p>
- <button class='btn-remove' id='ingridient-btn' type="button" data-id="${idIngredient}">Remove from favorite</button>`;
+  <button id='ingridient-btn' class="btn-remove ${
+    findIngredient ? 'button-remove' : 'button-add'
+  }" type="button" data-id="${idIngredient}">${
+    findIngredient ? 'Remove from favorite' : 'Add to favorite'
+  }</button>`;
   console.log(response);
   modalIngridient.innerHTML = markup;
+  const btnAddRemove = document.querySelector('#ingridient-btn');
+  btnAddRemove.addEventListener('click', e => {
+    addToFavorite(e.target.dataset.id);
+  });
+}
+
+async function addToFavorite(id) {
+  const btnAddRemove = document.querySelector('#ingridient-btn');
+  // const btnArr = document.querySelectorAll('[data-action="favorite"]') || [];
+
+  let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
+  let ingredient = favorite.find(elem => elem.idIngredient === id);
+  // let btnHome = [];
+  // btnArr.forEach(elem => {
+  //   elem.dataset.id === id && btnHome.push(elem);
+  // });
+
+  if (!ingredient) {
+    // ingredient = render.cards.find(elem => elem.idDrink === id);
+    // if (!ingredient) {
+    const response = await apiService.getCocktailIngrId(id);
+    ingredient = response[0];
+    // }
+    favorite.push(ingredient);
+  } else {
+    favorite = favorite.filter(elem => elem.idIngredient !== id);
+  }
+  localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
+  changeFavoriteBtn(btnAddRemove);
+  // render.changeFavoriteBtn(btnHome[0]);
+}
+
+function changeFavoriteBtn(btn) {
+  const id = btn.dataset.id;
+  let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY));
+
+  const inArray = favorite.find(elem => elem?.idIngredient === id);
+  if (inArray) {
+    btn.textContent = 'Remove from favorite';
+    btn.classList.add('button-remove');
+    btn.classList.remove('button-add');
+  } else {
+    btn.textContent = 'Add to favorite';
+    btn.classList.add('button-add');
+    btn.classList.remove('button-remove');
+  }
 }
