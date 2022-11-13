@@ -15,7 +15,7 @@ async function searchCoctail(e) {
   coctailName = searchForm.searchQuery.value.trim();
   clearInput();
   if (coctailName.length > 1) {
-    apiService.getCocktailByName(coctailName.toLowerCase).then(r => {
+    apiService.getCocktailByName(coctailName.toLowerCase()).then(r => {
       if (r.length === 0) {
         render.renderNotFound();
         return;
@@ -24,7 +24,7 @@ async function searchCoctail(e) {
       render.createMarkUpCocktails();
     });
   } else {
-    render.sectionSelectionFoRender(coctailName.toLowerCase);
+    render.sectionSelectionFoRender(coctailName.toLowerCase());
   }
 }
 
