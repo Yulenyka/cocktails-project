@@ -126,7 +126,7 @@ export default class Render {
               </li>`;
       })
       .join('');
-    // this.resetMarkUp();
+    this.resetMarkUp();
     if (this.gallery) this.gallery.innerHTML = markUp;
   }
 
