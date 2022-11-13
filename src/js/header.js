@@ -13,6 +13,7 @@ searchForm.addEventListener('submit', searchCoctail);
 async function searchCoctail(e) {
   e.preventDefault();
   coctailName = searchForm.searchQuery.value.trim();
+  clearInput();
   if (coctailName) {
     apiService.getCocktailByName(coctailName).then(r => {
       if (r.length === 0) {
@@ -23,4 +24,8 @@ async function searchCoctail(e) {
       render.createMarkUpCocktails();
     });
   }
+}
+
+function clearInput() {
+  searchForm.searchQuery.value = '';
 }
