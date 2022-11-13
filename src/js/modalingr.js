@@ -56,24 +56,26 @@ export async function renderModalIngridient(ingridientName) {
   let vol = strABV
     ? `<br /> <span class="ingredient__text--accent">Alcohol by volume:</span> ${strABV}%`
     : '';
-  let markup = `<h2 class="ingredient__title">${strIngredient}</h2>
-<h3 class="ingredient__subtitle">${strType ? strType : 'No information'}</h3>
+  let markup = `<div class="ingredient__head"><h2 class="ingredient__title">${strIngredient}</h2>
+<h3 class="ingredient__subtitle">${
+    strType ? strType : 'No information'
+  }</h3></div>
 <div class="line"></div>
+<div class="ingredient__bottom"><p class="ingredient__description">${
+    strDescription
+      ? strDescription
+      : `Sorry, we have no information about ${strIngredient}.`
+  }</p>
 <p class="ingredient__text">${
     strAlcohol === 'Yes'
       ? `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}${vol}`
       : `<span class="ingredient__text--accent">Alcohol:</span> ${strAlcohol}`
   }</p>
-<p class="ingredient__description">${
-    strDescription
-      ? strDescription
-      : `Sorry, we have no information about ${strIngredient}.`
-  }</p>
   <button id='ingridient-btn' class="btn-remove ${
     findIngredient ? 'button-remove' : 'button-add'
   }" type="button" data-id="${idIngredient}">${
     findIngredient ? 'Remove from favorite' : 'Add to favorite'
-  }</button>`;
+  }</button></div>`;
   console.log(response);
   modalIngridient.innerHTML = markup;
   const btnAddRemove = document.querySelector('#ingridient-btn');

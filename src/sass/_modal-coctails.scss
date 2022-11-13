@@ -45,7 +45,7 @@
 
   @media screen and (min-width: $tab) {
     width: 820px;
-    padding: 0 0 28px;
+    padding: 0 28px 28px 0;
   }
 }
 
@@ -146,6 +146,8 @@
   font-size: 16px;
   line-height: 1.62;
   color: $textColorGray;
+  max-height: 130px;
+  overflow-y: auto;
 
   @media screen and (min-width: $tab) {
     margin-bottom: 0px;
@@ -182,7 +184,7 @@
   transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    background-color: #f5f5f5;
+    background-color: $bgColor;
     color: $accentColor;
   }
   &:active {
