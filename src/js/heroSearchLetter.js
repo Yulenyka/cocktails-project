@@ -1,9 +1,8 @@
 import Render from './render';
-import { heroNav } from './heroMobileSelect';
-import { heroSelect } from './heroMobileSelect';
+import { heroNav, heroSelect } from './heroMobileSelect';
 
 const letterList = document.querySelector('.hero__navigation');
-const letterBtn = document.querySelector('.hero__button');
+// const letterBtn = document.querySelector('.hero__button');
 const gallery = document.querySelector('.cocktails-list');
 console.log(gallery);
 

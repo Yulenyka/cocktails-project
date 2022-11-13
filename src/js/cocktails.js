@@ -1,10 +1,9 @@
 import Render from './render';
-import { renderModalCocktail } from './modalcocktail';
-import { openModalCocktail } from './modalcocktail';
-import { renderModalCocktail } from './modalcocktail';
-const modalCocktail = document.querySelector('.modal-cocktail');
+import { renderModalCocktail, openModalCocktail } from './modalcocktail';
+
 const render = new Render();
 const cocktailsListRef = document.querySelector('.cocktails-list');
+// console.log(cocktailsListRef);
 if (cocktailsListRef) cocktailsListRef.addEventListener('click', onClickBtn);
 
 render.markUpRandomCocktails();

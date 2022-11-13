@@ -1,20 +1,21 @@
 import Render, { FAVORITE_KEY } from './render';
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 import ApiService from './apiservice';
-// import { showAllCoctails } from './favoritecocktails';
+
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
-// import { render } from './cocktails';
 let apiService = new ApiService();
 let render = new Render();
+let callbackOnClose;
 
-export function openModalCocktail() {
+export function openModalCocktail(onClose = () => {}) {
   backdrop.classList.remove('is-hidden');
   btnModalClose.addEventListener('click', closeModalCocktail);
   backdrop.addEventListener('click', onBackDropClick);
   window.addEventListener('keydown', onEscClick);
   document.body.classList.add('no-scroll');
+  callbackOnClose = onClose;
 }
 
 export function closeModalCocktail() {
@@ -23,6 +24,7 @@ export function closeModalCocktail() {
   backdrop.removeEventListener('click', onBackDropClick);
   window.removeEventListener('keydown', onEscClick);
   document.body.classList.remove('no-scroll');
+  callbackOnClose();
 }
 
 function onBackDropClick(e) {
@@ -70,8 +72,6 @@ instruction__text">${strInstructions}</p>
                 </div>
                 <img class="photo" src="${strDrinkThumb}" alt="#">
               </div>
-              
-
               <div class="ingredients">
                   <h3 class="ingredients__title">Ingredients</h3>
                   <p class="ingredients__subtitle">Per cocktail</p>
@@ -89,6 +89,7 @@ instruction__text">${strInstructions}</p>
   modalCocktail.innerHTML = markup;
 
   let ingredientsList = document.querySelector('.ingredients__list');
+  console.log(ingredientsList);
   ingredientsList.addEventListener('click', e => {
     let ingridientName = '';
     if (e.target.tagName === 'P') {
@@ -124,10 +125,10 @@ async function addToFavorite(id) {
   });
 
   if (!cocktail) {
-    // cocktail = render.cards.find(elem => elem.idDrink === id);
+    cocktail = render.cards.find(elem => elem.idDrink === id);
     // if (!cocktail) {
-    const response = await apiService.getCocktailById(id);
-    cocktail = response[0];
+    //   // const response = await apiService.getCocktailById(id); //????????
+    //   cocktail = response[0];
     // }
     favorite.push(cocktail);
   } else {

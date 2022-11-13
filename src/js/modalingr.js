@@ -6,15 +6,17 @@ const modalIngridient = document.querySelector('.modal-ingredient');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
 const btnModalClose = document.querySelector('#ingridient-close');
 
-// let render = new Render();
+let render = new Render();
 let apiService = new ApiService();
 const FAVORITE_KEY = 'favoriteIngredient';
+let callbackOnClose;
 
-export function openModalIngridient() {
+export function openModalIngridient(onClose = () => {}) {
   backdropIngridient.classList.remove('is-hidden');
   btnModalClose.addEventListener('click', closeModalIngridient);
   backdropIngridient.addEventListener('click', onBackDropClick);
   window.addEventListener('keydown', onEscClick);
+  callbackOnClose = onClose;
 }
 
 export function closeModalIngridient() {
@@ -22,6 +24,7 @@ export function closeModalIngridient() {
   btnModalClose.removeEventListener('click', closeModalIngridient);
   backdropIngridient.removeEventListener('click', onBackDropClick);
   window.removeEventListener('keydown', onEscClick);
+  callbackOnClose();
 }
 
 function onBackDropClick(e) {
