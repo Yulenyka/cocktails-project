@@ -18,6 +18,16 @@ body {
     line-height: 1.19;
   }
 }
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: $textColorWhite;
+}
+::-webkit-scrollbar-thumb {
+  background: $accentColor;
+  border-radius: 4px;
+}
 
 .section {
   padding-top: 60px;
@@ -101,8 +111,8 @@ ol {
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 img {
