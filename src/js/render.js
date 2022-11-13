@@ -11,7 +11,6 @@ const COUNT_PICT_ON_DESKOP = 9;
 const COUNT_PICT_ON_TABLET = 6;
 const COUNT_PICT_ON_MOBILE = 3;
 
-// сделать информацию о текущем пользователе глобальной, для предоставления доступа всем скриптам
 window.globalArrays = {
   cards: [], // загальний масив
   cardForRender: [], // поточні відображені картки
@@ -73,12 +72,11 @@ export default class Render {
     }
     this.paginationBlock.classList.remove('is-none');
 
-    // console.log(this.paginationList.children[this.currentPage - 1]);
-
-    // let refActiveButton = this.paginationList.children;
-    // console.log(refActiveButton);
-    // refActiveButton.classList.add('pagination-button--select');
     this.createMarkupPagination();
+
+    this.paginationList.childNodes[
+      this.currentPage - 1
+    ].firstElementChild.classList.add('pagination-button--select');
   }
 
   createMarkupPagination() {
