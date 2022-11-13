@@ -50,7 +50,6 @@ export function showIngridients(galleryIngridients) {
     });
     const buttonRemove = document.querySelectorAll('.button-remove');
     buttonRemove.forEach(elem => {
-      console.log(elem);
       elem.addEventListener('click', removeFromFavorite);
     });
   } else {
