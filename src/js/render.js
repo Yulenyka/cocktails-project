@@ -131,9 +131,31 @@ export default class Render {
     if (this.gallery) this.gallery.innerHTML = markUp;
   }
 
+  makeRenderByWord(word) {
+    // Функція яка рендерить розмітку по слову
+    this.resetGlobalArray();
+    this.resetMarkUp();
+    this.newsApi
+      .getCocktailByName(word)
+      .then(a => {
+        this.cards = a.slice();
+        if (this.cards.length === 0) {
+          this.renderNotFound();
+        } else {
+          document.querySelector('.missingcocktails').classList.add('is-none');
+          document.querySelector('.cocktails').classList.remove('is-none');
+          this.createMarkUpCocktails();
+        }
+      })
+      .catch(e => {
+        this.resetGlobalArray();
+      });
+  }
+
   sectionSelectionFoRender(letter) {
     // Функція яка рендерить розмітку по певному заданому символу
     this.resetGlobalArray();
+    this.resetMarkUp();
     this.newsApi
       .getCocktailByFirstLetter(letter)
       .then(a => {
@@ -156,6 +178,7 @@ export default class Render {
     document.querySelector('.cocktails').classList.add('is-none');
     document.querySelector('.missingcocktails').classList.remove('is-none');
     this.galleryTitle.classList.add('is-none');
+    this.paginationOnOf();
     this.createMarkUpMissingCocktails();
   }
 
