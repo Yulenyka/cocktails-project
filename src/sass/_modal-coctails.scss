@@ -31,16 +31,12 @@
 }
 
 .modal {
-  background-color: azure;
   position: relative;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 40px 20px;
   max-width: 90%;
   max-height: 90vh;
   overflow-y: auto;
-
+  background-color: $textColorWhite;
   background-color: $textColorWhite;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -49,34 +45,10 @@
 
   @media screen and (min-width: $tab) {
     width: 820px;
-    padding-top: 0px;
-    padding-bottom: 28px;
-    padding-left: 0px;
-    padding-right: 0px;
+    padding: 0 0 28px;
   }
 }
-.modal-close {
-  position: absolute;
-  right: 16px;
-  top: 16px;
-  width: 32px;
-  height: 32px;
-  border: none;
-  z-index: 1666;
-  transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  &:hover,
-  &:focus {
-    color: $accentColor;
-    fill: $accentColor;
-  }
-  &__icon {
-    fill: currentColor;
-  }
-  @media screen and (min-width: $tab) {
-    right: 12px;
-    top: 12px;
-  }
-}
+
 .modal__title {
   margin-bottom: 20px;
   font-family: $fRoboto;
@@ -92,6 +64,7 @@
     margin-bottom: 28px;
   }
 }
+
 .modal__wrap {
   @media screen and (min-width: $tab) {
     display: flex;
@@ -104,6 +77,7 @@
     padding-left: 28px;
   }
 }
+
 .instruction__title {
   margin-bottom: 20px;
   font-family: $fPoppins;
@@ -129,6 +103,7 @@
     margin-bottom: 40px;
   }
 }
+
 .photo {
   margin-bottom: 22px;
   width: 100%;
@@ -152,9 +127,8 @@
   line-height: 1.62;
   text-transform: uppercase;
   color: $texttColorBlackModal;
-  @media screen and (min-width: $tab) {
-  }
 }
+
 .ingredients__subtitle {
   margin-bottom: 8px;
   font-family: $fPoppins;
@@ -162,12 +136,11 @@
   font-size: 14px;
   line-height: 1.5;
   color: $texttColorBlackModal;
-  @media screen and (min-width: $tab) {
-  }
 }
+
 .ingredients__list {
   margin-bottom: 32px;
-  font-family: 'Poppins';
+  font-family: $fPoppins;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -179,7 +152,7 @@
   }
 }
 .ingredients__link {
-  font-family: 'Poppins';
+  font-family: $fPoppins;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -192,9 +165,6 @@
   }
 }
 
-.ingredients__star {
-  color: $texttColorBlackModal;
-}
 .btn-remove {
   min-width: 185px;
   align-items: center;
@@ -218,7 +188,5 @@
   &:active {
     background-color: $accentColor;
     color: $textColorWhite;
-  }
-  @media screen and (min-width: $tab) {
   }
 }

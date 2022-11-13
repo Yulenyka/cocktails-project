@@ -1,20 +1,21 @@
 import Render, { FAVORITE_KEY } from './render';
 import { openModalIngridient, renderModalIngridient } from './modalingr';
 import ApiService from './apiservice';
-import './cocktails';
 
 const modalCocktail = document.querySelector('.modal-cocktail');
 const backdrop = document.querySelector('.backdrop');
 const btnModalClose = document.querySelector('.modal-close');
-
 let apiService = new ApiService();
+let render = new Render();
+let callbackOnClose;
 
-export function openModalCocktail() {
+export function openModalCocktail(onClose = () => {}) {
   backdrop.classList.remove('is-hidden');
   btnModalClose.addEventListener('click', closeModalCocktail);
   backdrop.addEventListener('click', onBackDropClick);
   window.addEventListener('keydown', onEscClick);
   document.body.classList.add('no-scroll');
+  callbackOnClose = onClose;
 }
 
 export function closeModalCocktail() {
@@ -23,6 +24,7 @@ export function closeModalCocktail() {
   backdrop.removeEventListener('click', onBackDropClick);
   window.removeEventListener('keydown', onEscClick);
   document.body.classList.remove('no-scroll');
+  callbackOnClose();
 }
 
 function onBackDropClick(e) {
@@ -70,8 +72,6 @@ instruction__text">${strInstructions}</p>
                 </div>
                 <img class="photo" src="${strDrinkThumb}" alt="#">
               </div>
-              
-
               <div class="ingredients">
                   <h3 class="ingredients__title">Ingredients</h3>
                   <p class="ingredients__subtitle">Per cocktail</p>
@@ -80,7 +80,7 @@ instruction__text">${strInstructions}</p>
                   </ul>
               </div>
           </div>
-           <button class="btn-remove ${
+           <button id='favcocktail' class="btn-remove ${
              findCocktail ? 'button-remove' : 'button-add'
            }" type="button" data-id="${idDrink}">${
     findCocktail ? 'Remove from favorite' : 'Add to favorite'
@@ -89,6 +89,7 @@ instruction__text">${strInstructions}</p>
   modalCocktail.innerHTML = markup;
 
   let ingredientsList = document.querySelector('.ingredients__list');
+  console.log(ingredientsList);
   ingredientsList.addEventListener('click', e => {
     let ingridientName = '';
     if (e.target.tagName === 'P') {
@@ -106,14 +107,14 @@ instruction__text">${strInstructions}</p>
 }
 
 function updateButton() {
-  const btnModalCocktail = document.querySelector('.btn-remove');
+  const btnModalCocktail = document.querySelector('#favcocktail');
   btnModalCocktail.addEventListener('click', e => {
     addToFavorite(e.target.dataset.id);
   });
 }
 
 async function addToFavorite(id) {
-  const btnAddRemove = document.querySelector('.btn-remove');
+  const btnAddRemove = document.querySelector('#favcocktail');
   const btnArr = document.querySelectorAll('[data-action="favorite"]') || [];
 
   let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
@@ -125,10 +126,10 @@ async function addToFavorite(id) {
 
   if (!cocktail) {
     cocktail = render.cards.find(elem => elem.idDrink === id);
-    if (!cocktail) {
-      const response = await apiService.getCocktailById(id);
-      cocktail = response[0];
-    }
+    // if (!cocktail) {
+    //   // const response = await apiService.getCocktailById(id); //????????
+    //   cocktail = response[0];
+    // }
     favorite.push(cocktail);
   } else {
     favorite = favorite.filter(elem => elem.idDrink !== id);

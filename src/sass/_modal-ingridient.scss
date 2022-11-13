@@ -33,10 +33,7 @@
 .modal-container {
   background-color: $textColorWhite;
   position: relative;
-  padding-top: 40px;
-  padding-bottom: 40px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 40px 20px;
   max-width: 85%;
   overflow-y: auto;
   background-color: $textColorWhite;
@@ -47,9 +44,7 @@
   @media screen and (min-width: $tab) {
     width: 720px;
     height: 520px;
-    padding-bottom: 28px;
-    padding-left: 28px;
-    padding-right: 28px;
+    padding: 0;
   }
 }
 .modal-close {
@@ -83,6 +78,8 @@
   color: $texttColorBlackModal;
   @media screen and (min-width: $tab) {
     margin-bottom: 28px;
+    padding-left: 28px;
+    padding-top: 40px;
   }
 }
 
@@ -97,11 +94,12 @@
 
   @media screen and (min-width: $tab) {
     margin-bottom: 40px;
+    padding-left: 28px;
   }
 }
 .line {
   @media screen and (min-width: $tab) {
-    width: 720px;
+    width: 100%;
     margin-bottom: 28px;
     border-bottom: 1px solid;
     border-color: $accentColor;
@@ -119,7 +117,6 @@
   }
   @media screen and (min-width: $tab) {
     padding-left: 28px;
-    padding-right: 28px;
   }
 }
 .ingredient__description {
@@ -129,9 +126,13 @@
   font-size: 16px;
   line-height: 1.75;
   color: $textColorGray;
-  max-height: 300px;
+  height: 300px;
   overflow-y: auto;
   @media screen and (min-width: $tab) {
+    height: 165px;
+    padding-left: 28px;
+    padding-right: 28px;
+    width: 654px;
   }
 }
 
@@ -152,7 +153,7 @@
   transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover,
   &:focus {
-    background-color: #f5f5f5;
+    background-color: $bgColor;
     color: $accentColor;
   }
   &:active {

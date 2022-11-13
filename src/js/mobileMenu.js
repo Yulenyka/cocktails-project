@@ -1,4 +1,4 @@
-import './darkThemeToggle';
+// import './darkThemeToggle';
 
 const body = document.body;
 const burger = document.querySelector('[data-burger]');

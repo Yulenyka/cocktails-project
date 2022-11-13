@@ -2,6 +2,8 @@
 import { FAVORITE_KEY } from './render';
 import { openModalCocktail, renderModalCocktail } from './modalcocktail';
 const gallery = document.querySelector('.favorite-cocktails__list');
+console.log(gallery);
+console.log('Hallo world');
 
 export function showAllCoctails(gallery) {
   let favoriteCocktails = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
@@ -37,7 +39,9 @@ export function showAllCoctails(gallery) {
         );
         // console.log(cocktail);
         renderModalCocktail(cocktail);
-        openModalCocktail();
+        openModalCocktail(() => {
+          showAllCoctails(gallery);
+        });
       });
     });
     const buttonRemove = document.querySelectorAll('.button-remove');
@@ -46,8 +50,8 @@ export function showAllCoctails(gallery) {
       elem.addEventListener('click', removeFromFavorite);
     });
   } else {
-    const markupCocktails = `<li>
-    <p class="no__favorite-cocktails">
+    const markupCocktails = `<li class="favorite-ingridient__box">
+    <p class="favorite-ingridient__text">
       You haven't added any <br />
       favorite cocktails yet
     </p>
@@ -62,6 +66,7 @@ const removeFromFavorite = e => {
     elem => elem.idDrink !== e.target.dataset.id
   );
   console.log(favoriteCocktails);
+
   localStorage.setItem(FAVORITE_KEY, JSON.stringify(favoriteCocktails));
   showAllCoctails(gallery);
 };
