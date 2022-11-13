@@ -22,7 +22,7 @@ export default class Render {
   constructor() {
     this.gallery = document.querySelector('.cocktails-list');
     this.wrapper = document.querySelector('.missingcocktails-wrap');
-    this.cocktailsListRef = document.querySelector('.cocktails-list');
+    this.galleryTitle = document.querySelector('.cocktails-title');
     this.modalCocktail = document.querySelector('.modal-cocktail');
     this.paginationBlock = document.querySelector('.pagination-box');
     this.paginationList = document.querySelector('.pagination-list');
@@ -127,11 +127,13 @@ export default class Render {
       })
       .join('');
     this.resetMarkUp();
+    this.galleryTitle.classList.remove('is-none');
     if (this.gallery) this.gallery.innerHTML = markUp;
   }
 
   sectionSelectionFoRender(letter) {
     // Функція яка рендерить розмітку по певному заданому символу
+    this.resetGlobalArray();
     this.newsApi
       .getCocktailByFirstLetter(letter)
       .then(a => {
@@ -153,6 +155,7 @@ export default class Render {
   renderNotFound() {
     document.querySelector('.cocktails').classList.add('is-none');
     document.querySelector('.missingcocktails').classList.remove('is-none');
+    this.galleryTitle.classList.add('is-none');
     this.createMarkUpMissingCocktails();
   }
 
@@ -160,14 +163,16 @@ export default class Render {
     // Функція створення рядку розмитки, коли по заданому символу
     let markUp = `<h2 class="cocktails-title--refusal">Sorry, we didn't find any cocktail for you</h2>
         <div class="cocktails-frame"></div>`;
-    this.resetGlobalArray();
+    // this.resetGlobalArray();
     this.paginationOnOf();
     this.resetMarkUp();
+
     this.wrapper.innerHTML = markUp;
   }
 
   markUpRandomCocktails() {
     // Функція відмальовки рандомних зображень при першому запуску
+    this.resetGlobalArray();
     this.newsApi
       .getCocktailRandom(this.cocktailsPerPage())
       .then(a => {
