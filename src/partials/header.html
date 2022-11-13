@@ -1,18 +1,7 @@
 <header class="header page-header">
-  <div class="page-header__container">
-    <div class="desk-logo"><a class="logo" href="./index.html" alt="logo company"></a></div>
-    <div class="page-header__box" data-box>
-      <form class="search-form visible">
-        <input
-          class="search-form__input"
-          type="text"
-          name="searchQuery"
-          autocomplete="off"
-          placeholder="Search ..."
-          aria-label="search input field" 
-        />
-      </form>
-      <nav class="nav" aria-label="navigation menu" data-nav>
+  <div class="container page-header__container">
+   <a class="logo" href="./index.html" alt="logo company"></a>
+     <nav class="nav" aria-label="navigation menu" data-nav>
         <ul class="nav__list">
           <li class="nav__item">
             <a class="nav__link" href="./index.html">Home</a>
@@ -36,17 +25,25 @@
           </li>
         </ul>
       </nav>
-    </div>
-    <div class="theme-desk">
-      <label class="checkbox">
-        <input class="checkbox-input" name="theme" type="checkbox" />
-        <p class="ligth">Light</p>
-        <div class="checkbox-box"></div>
-        <p class="darkk">Dark</p>
-      </label>
-    </div>
-
-    <button
+    <div class="page-header__box" data-box>
+      <form class="search-form visible">
+                       <button
+            class="search-form__btn"
+            type="submit"
+            aria-label="search button"
+          >
+            <svg class="search-form__icon" width="24" height="24"></svg>
+          </button>
+        <input
+          class="search-form__input"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search ..."
+          aria-label="search input field" 
+        />
+      </form>
+      <button
       class="burger"
       data-burger
       aria-label="menu button"
@@ -60,5 +57,18 @@
         ></use>
       </svg>
     </button>
+        <div class="theme-desk">
+      <label class="checkbox">
+        <input class="checkbox-input" name="theme" type="checkbox" />
+        <p class="ligth">Light</p>
+        <div class="checkbox-box"></div>
+        <p class="darkk">Dark</p>
+      </label>
+    </div>
+     
+    </div>
+
+
+    
   </div>
 </header>
