@@ -15,14 +15,7 @@ async function searchCoctail(e) {
   coctailName = searchForm.searchQuery.value.trim();
   clearInput();
   if (coctailName.length > 1) {
-    apiService.getCocktailByName(coctailName.toLowerCase()).then(r => {
-      if (r.length === 0) {
-        render.renderNotFound();
-        return;
-      }
-      render.cards = r.slice();
-      render.createMarkUpCocktails();
-    });
+    render.makeRenderByWord(coctailName.toLowerCase());
   } else {
     render.sectionSelectionFoRender(coctailName.toLowerCase());
   }
