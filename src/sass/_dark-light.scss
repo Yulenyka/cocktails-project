@@ -1,42 +1,42 @@
 .theme-desk {
-//   // position: relative;
-//   display: none;
-//   padding-top: 10px;
-//   font-size: 18px;
-//   line-height: 24px; 
+  // position: relative;
+  display: none;
+  padding-top: 10px;
+  font-size: 18px;
+  line-height: 24px; 
 
-//   &.visible {
-//     display: block;
-//     transform: none;
+  &.visible {
+    display: block;
+    transform: none;
 
-//     @media screen and (min-width: $mob2) {
-//       font-size: 18px;
-//       line-height: 24px;
-//     }
-//   }
+    @media screen and (min-width: $mob2) {
+      font-size: 18px;
+      line-height: 24px;
+    }
+  }
 
-//   @media screen and (min-width: 769px) {
-//     display: block;
-//     // font-size: 18px;
-//     // line-height: 24px;
-//     // position: absolute;
-//     // top: 0px;
-//     // right: 32px;
-//   }
+  @media screen and (min-width: 769px) {
+    display: block;
+    // font-size: 18px;
+    // line-height: 24px;
+    // position: absolute;
+    // top: 0px;
+    // right: 32px;
+  }
 
-//   @media screen and (min-width: 769px) {
-//     right: 32px;
-//   }
-// }
+  @media screen and (min-width: 769px) {
+    right: 32px;
+  }
+}
 
-// .theme-desk.visible {
-//   @media screen and (min-width: 768px) {
-//     @media screen and (max-width: $tab) {
-//       position: absolute;
-//       top: 25px;
-//       left: 289px;
-//     }
-//   }
+.theme-desk.visible {
+  @media screen and (min-width: 768px) {
+    @media screen and (max-width: $tab) {
+      position: absolute;
+      top: 25px;
+      left: 289px;
+    }
+  }
 }
 
 .checkbox {
