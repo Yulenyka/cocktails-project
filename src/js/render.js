@@ -184,7 +184,7 @@ export default class Render {
 
   createMarkUpMissingCocktails() {
     // Функція створення рядку розмитки, коли по заданому символу
-    let markUp = `<h2 class="cocktails-title--refusal">Sorry, we didn't find any cocktail for you</h2>
+    let markUp = `<h2 class="cocktails-title__refusal">Sorry, we didn't find any cocktail for you</h2>
         <div class="cocktails-frame"></div>`;
     // this.resetGlobalArray();
     this.paginationOnOf();
