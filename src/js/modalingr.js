@@ -1,6 +1,5 @@
 import Render from './render';
 import ApiService from './apiservice';
-// import { showIngridients } from './favoritingridient';
 
 const modalIngridient = document.querySelector('.modal-ingredient');
 const backdropIngridient = document.querySelector('.backdrop-ingridient');
@@ -76,7 +75,6 @@ export async function renderModalIngridient(ingridientName) {
   }" type="button" data-id="${idIngredient}">${
     findIngredient ? 'Remove from favorite' : 'Add to favorite'
   }</button></div>`;
-  console.log(response);
   modalIngridient.innerHTML = markup;
   const btnAddRemove = document.querySelector('#ingridient-btn');
   btnAddRemove.addEventListener('click', e => {
@@ -86,28 +84,18 @@ export async function renderModalIngridient(ingridientName) {
 
 async function addToFavorite(id) {
   const btnAddRemove = document.querySelector('#ingridient-btn');
-  // const btnArr = document.querySelectorAll('[data-action="favorite"]') || [];
-
   let favorite = JSON.parse(localStorage.getItem(FAVORITE_KEY)) || [];
   let ingredient = favorite.find(elem => elem.idIngredient === id);
-  // let btnHome = [];
-  // btnArr.forEach(elem => {
-  //   elem.dataset.id === id && btnHome.push(elem);
-  // });
 
   if (!ingredient) {
-    // ingredient = render.cards.find(elem => elem.idDrink === id);
-    // if (!ingredient) {
     const response = await apiService.getCocktailIngrId(id);
     ingredient = response[0];
-    // }
     favorite.push(ingredient);
   } else {
     favorite = favorite.filter(elem => elem.idIngredient !== id);
   }
   localStorage.setItem(FAVORITE_KEY, JSON.stringify(favorite));
   changeFavoriteBtn(btnAddRemove);
-  // render.changeFavoriteBtn(btnHome[0]);
 }
 
 function changeFavoriteBtn(btn) {
