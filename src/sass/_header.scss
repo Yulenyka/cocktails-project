@@ -131,9 +131,9 @@ form.search-form.visible {
   z-index: 200;
   width: 100%;
   overflow: hidden;
-  height: 55px;
+  height: 70px;
     background: $bgColor;
-
+padding-top: 20px;
 
   body.dark & {
     background: #202025;
@@ -141,13 +141,13 @@ form.search-form.visible {
 
   @include breakpoint(min, tablet) {
     @include breakpoint(max, laptop) {
-      height: 65px;
+      height: 80px;
     }
   }
 
   @include breakpoint(min, laptop) {
     overflow: visible;
-    height: 60px;
+    height: 80px;
   }
 
   &__container {
@@ -170,7 +170,7 @@ form.search-form.visible {
     @include breakpoint(max, tablet) {
       position: fixed;
       right: 0;
-      top: 55px;
+      top: 70px;
       z-index: 100;
       overflow-y: auto;
       padding: 20px;
@@ -408,7 +408,6 @@ form.search-form.visible {
  flex-direction: row-reverse;
     justify-content: space-around;
     display: flex;
-    padding-top: 15px;
     // gap: 250px;
   }
 } 
