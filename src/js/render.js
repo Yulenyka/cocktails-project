@@ -22,7 +22,7 @@ export default class Render {
   constructor() {
     this.gallery = document.querySelector('.cocktails-list');
     this.wrapper = document.querySelector('.missingcocktails-wrap');
-    this.cocktailsListRef = document.querySelector('.cocktails-list');
+    this.galleryTitle = document.querySelector('.cocktails-title');
     this.modalCocktail = document.querySelector('.modal-cocktail');
     this.paginationBlock = document.querySelector('.pagination-box');
     this.paginationList = document.querySelector('.pagination-list');
@@ -126,12 +126,36 @@ export default class Render {
               </li>`;
       })
       .join('');
-    // this.resetMarkUp();
+    this.resetMarkUp();
+    this.galleryTitle.classList.remove('is-none');
     if (this.gallery) this.gallery.innerHTML = markUp;
+  }
+
+  makeRenderByWord(word) {
+    // Функція яка рендерить розмітку по слову
+    this.resetGlobalArray();
+    this.resetMarkUp();
+    this.newsApi
+      .getCocktailByName(word)
+      .then(a => {
+        this.cards = a.slice();
+        if (this.cards.length === 0) {
+          this.renderNotFound();
+        } else {
+          document.querySelector('.missingcocktails').classList.add('is-none');
+          document.querySelector('.cocktails').classList.remove('is-none');
+          this.createMarkUpCocktails();
+        }
+      })
+      .catch(e => {
+        this.resetGlobalArray();
+      });
   }
 
   sectionSelectionFoRender(letter) {
     // Функція яка рендерить розмітку по певному заданому символу
+    this.resetGlobalArray();
+    this.resetMarkUp();
     this.newsApi
       .getCocktailByFirstLetter(letter)
       .then(a => {
@@ -153,6 +177,8 @@ export default class Render {
   renderNotFound() {
     document.querySelector('.cocktails').classList.add('is-none');
     document.querySelector('.missingcocktails').classList.remove('is-none');
+    this.galleryTitle.classList.add('is-none');
+    this.paginationOnOf();
     this.createMarkUpMissingCocktails();
   }
 
@@ -160,14 +186,16 @@ export default class Render {
     // Функція створення рядку розмитки, коли по заданому символу
     let markUp = `<h2 class="cocktails-title--refusal">Sorry, we didn't find any cocktail for you</h2>
         <div class="cocktails-frame"></div>`;
-    this.resetGlobalArray();
+    // this.resetGlobalArray();
     this.paginationOnOf();
     this.resetMarkUp();
+
     this.wrapper.innerHTML = markUp;
   }
 
   markUpRandomCocktails() {
     // Функція відмальовки рандомних зображень при першому запуску
+    this.resetGlobalArray();
     this.newsApi
       .getCocktailRandom(this.cocktailsPerPage())
       .then(a => {

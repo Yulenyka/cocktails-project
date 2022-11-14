@@ -89,7 +89,6 @@ instruction__text">${strInstructions}</p>
   modalCocktail.innerHTML = markup;
 
   let ingredientsList = document.querySelector('.ingredients__list');
-  console.log(ingredientsList);
   ingredientsList.addEventListener('click', e => {
     let ingridientName = '';
     if (e.target.tagName === 'P') {
@@ -126,10 +125,6 @@ async function addToFavorite(id) {
 
   if (!cocktail) {
     cocktail = render.cards.find(elem => elem.idDrink === id);
-    // if (!cocktail) {
-    //   // const response = await apiService.getCocktailById(id); //????????
-    //   cocktail = response[0];
-    // }
     favorite.push(cocktail);
   } else {
     favorite = favorite.filter(elem => elem.idDrink !== id);

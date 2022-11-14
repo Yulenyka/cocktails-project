@@ -2,9 +2,6 @@ import Render from './render';
 import { heroNav, heroSelect } from './heroMobileSelect';
 
 const letterList = document.querySelector('.hero__navigation');
-// const letterBtn = document.querySelector('.hero__button');
-const gallery = document.querySelector('.cocktails-list');
-console.log(gallery);
 
 const render = new Render();
 
@@ -27,7 +24,6 @@ async function showCoctails(event) {
     spanEl.textContent = event.target.textContent;
     heroNav.classList.add('is-hidden');
 
-    // heroSelect.classList.add('.hero__select-chosen');
     heroSelect.style.backgroundColor = '#FD5103';
     spanEl.style.color = '#FCFCFC';
     heroIcon.style.fill = '#FCFCFC';
