@@ -18,6 +18,11 @@ body {
     line-height: 1.19;
   }
 }
+body.dark {
+  background-color: #202025;
+  color: #fff;
+}
+
 ::-webkit-scrollbar {
   width: 4px;
 }
@@ -41,7 +46,6 @@ body {
 
 .container {
   min-width: 320px;
-  max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
