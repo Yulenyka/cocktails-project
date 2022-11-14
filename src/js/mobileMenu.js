@@ -40,6 +40,6 @@ function classUtil() {
   logo.classList.remove('visible');
   box.classList.remove('visible');
   nav.classList.remove('visible');
-  searchForm.classList.add('visible');
+  searchForm.classList.remove('visible');
   themeDesk.classList.remove('visible');
 }
