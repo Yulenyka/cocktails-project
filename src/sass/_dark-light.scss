@@ -1,37 +1,42 @@
 .theme-desk {
-  position: absolute;
-  display: none;
-  top: 25px;
-       font-size: 18px;
-      line-height: 24px;
+//   // position: relative;
+//   display: none;
+//   padding-top: 10px;
+//   font-size: 18px;
+//   line-height: 24px; 
 
-  &.visible {
-    display: block;
-    transform: none;
+//   &.visible {
+//     display: block;
+//     transform: none;
 
-    @media screen and (min-width: $mob2) {
-      font-size: 18px;
-      line-height: 24px;
-    }
+//     @media screen and (min-width: $mob2) {
+//       font-size: 18px;
+//       line-height: 24px;
+//     }
+//   }
 
-    @media screen and (min-width: 481px) {
-      @media screen and (max-width: 768px) {
-        padding-left: 210px;
-      }
-    }
-  }
-  @media screen and (min-width: 769px) {
-    display: block;
-    font-size: 18px;
-    line-height: 24px;
-    // position: absolute;
-    // top: 0px;
-    // right: 32px;
-  }
+//   @media screen and (min-width: 769px) {
+//     display: block;
+//     // font-size: 18px;
+//     // line-height: 24px;
+//     // position: absolute;
+//     // top: 0px;
+//     // right: 32px;
+//   }
 
-  @media screen and (min-width: 769px) {
-    right: 16px;
-  }
+//   @media screen and (min-width: 769px) {
+//     right: 32px;
+//   }
+// }
+
+// .theme-desk.visible {
+//   @media screen and (min-width: 768px) {
+//     @media screen and (max-width: $tab) {
+//       position: absolute;
+//       top: 25px;
+//       left: 289px;
+//     }
+//   }
 }
 
 .checkbox {
@@ -39,7 +44,9 @@
   height: 24px;
   display: flex;
   gap: 13px;
+  align-items: center;
 }
+
 .checkbox-box {
   position: relative;
   width: 40px;
@@ -62,6 +69,7 @@
   border: 1px solid $bgColor;
   background-color: $accentColor;
 }
+
 .checkbox-input:checked ~ .checkbox-box::before {
   background-color: $bgColor;
   left: 25px;
@@ -95,12 +103,21 @@
   }
 }
 
+small.darkk {
+  font-size: 18px;
+  line-height: 24px;
+}
 .ligth {
   color: $accentColor;
+  font-style: normal;
 
   body.dark & {
     color: $bgColor;
   }
+}
+
+.darkk {
+  font-style: normal;
 }
 
 .dark {
@@ -113,50 +130,75 @@
 }
 
 .favorite-cocktails__title {
-    body.dark & {
+  body.dark & {
     color: $bgColor;
   }
 }
 
 .no__favorite-cocktails {
-      body.dark & {
+  body.dark & {
     color: $bgColor;
   }
 }
 
 .cocktails__name {
-      body.dark & {
+  body.dark & {
     color: $bgColor;
   }
 }
 
 .backdrop {
-      body.dark & {
-     background-color: #bab1b899;
+  body.dark & {
+    background-color: #bab1b899;
   }
 }
 
 .modal {
-      body.dark & {
+  body.dark & {
     color: $bgColor;
-     background-color: $textColorBlack;
+    background-color: $textColorBlack;
   }
 }
 
 .modal__title {
-      body.dark & {
+  body.dark & {
     color: $bgColor;
   }
 }
 
 .ingredients__title {
-      body.dark & {
+  body.dark & {
     color: $bgColor;
   }
 }
 
 .ingredients__subtitle {
-      body.dark & {
-    color: #BDBDBD;
+  body.dark & {
+    color: #bdbdbd;
   }
+}
+
+.modal-ingredient {
+  body.dark & {
+    color: $bgColor;
+    background-color: $textColorBlack;
+  }
+}
+.ingredient__text--accent {
+   body.dark & {
+  color: $textColorWhite;
+   }
+}
+.modal-container {
+  body.dark & {
+     background-color: $textColorBlack;  
+  }
+}
+.modal-close__icon {
+  body.dark & {
+    fill: $bgColor;
+  }
+}
+body.dark modal-button__icon {
+    fill: #fcfcfc;
 }
